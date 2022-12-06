@@ -1,0 +1,14 @@
+{
+  "usePrettierrc": false,
+  "bracketSameLine": true,
+  "endOfLine": "auto",
+  "printWidth": 80,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "semi": false,
+  "jsxSingleQuote": true,
+  "singleQuote": true,
+  "useTabs": false,
+  "tabWidth": 2
+}
