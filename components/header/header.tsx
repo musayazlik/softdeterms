@@ -88,7 +88,7 @@ const Header = () => {
                 }}
               />
               <span>
-                <Icon icon='line-md:moon-alt-to-sunny-outline-loop-transition' />
+                <Icon icon='icon-park-twotone:sun-one' />
               </span>
               <div
                 className={`${styles.darkButton} bg-indigo-400 rounded-3xl flex items-center pl-1 `}>
@@ -96,7 +96,7 @@ const Header = () => {
                   className={`${styles.pin} bg-indigo-800 rounded-full`}></div>
               </div>
               <span>
-                <Icon icon='line-md:sunny-outline-to-moon-alt-loop-transition' />
+                <Icon icon='ph:moon-stars-duotone' />
               </span>
             </div>
             <div className='mobileMenu flex lg:hidden font-medium text-lg tracking-tight px-2.5 py-2 bg-indigo-700 hover:shadow-lg shadow-indigo-700/50 hover:shadow-indigo-600/40 text-indigo-100 duration-300 rounded-md outline-offset-4 outline-2 outline-indigo-600/50 outline-dotted hover:bg-indigo-800 cursor-pointer dark:text-indigo-50 ml-6'>
