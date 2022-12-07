@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+	font-family: "Poppins", sans-serif;
+}
+
 .logo path {
-	fill: #000 !important;
+	fill: #4338ca !important;
 }
 
 .dark .logo path {

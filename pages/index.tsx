@@ -10,7 +10,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='h-screen flex justify-center items-center bg-slate-300'>
+      <main className='h-screen flex justify-center items-center'>
         <h1>Home Page</h1>
       </main>
     </div>
