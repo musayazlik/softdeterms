@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <>
-      <header className=' bg-indigo-50 dark:bg-zinc-700/20 text-indigo-600 dark:text-zinc-50 shadow-md shadow-indigo-50/40 dark:shadow-slate-900/20'>
+      <header className=' bg-indigo-50/95 dark:bg-zinc-900/95 text-indigo-600 dark:text-zinc-50 shadow-lg shadow-indigo-800/60 dark:shadow-slate-900/40 absolute z-10 w-full'>
         <div className='xl:container mx-auto flex flex-wrap p-5 flex-row items-center justify-between'>
           <a className='flex flex-col gap-y-2 title-font font-medium items-center  md:mb-0 '>
             <Logo className='logo' />
