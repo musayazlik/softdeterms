@@ -10,8 +10,25 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='h-screen flex justify-center items-center'>
-        <h1>Home Page</h1>
+      <main className='flex mb-20 '>
+        <ul className='background bg-indigo-700 dark:bg-[#1b1947] '>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </main>
     </div>
   )
