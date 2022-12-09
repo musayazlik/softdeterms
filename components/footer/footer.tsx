@@ -8,7 +8,7 @@ import { Icon } from '@iconify/react'
 const Footer = () => {
   return (
     <>
-      <footer className='bg-indigo-50 dark:bg-zinc-700/20 text-indigo-600 dark:text-zinc-50 shadow-md shadow-indigo-50/40 dark:shadow-slate-900/20 pt-8 lg:pb-4 lg:pt-4 text-center grid grid-cols-12 px-4 sm:px-12 relative z-20'>
+      <footer className='bg-blue-50 dark:bg-zinc-700/20 text-blue-600 dark:text-zinc-50 shadow-md shadow-blue-50/40 dark:shadow-slate-900/20 pt-8 lg:pb-4 lg:pt-4 text-center grid grid-cols-12 px-4 sm:px-12 relative z-20'>
         <div className='col-span-12 lg:col-span-4 flex items-start lg:items-center justify-center lg:justify-start h-full gap-x-4'>
           <Link href={'/'} className='hover:scale-125 duration-300'>
             <Icon icon='ph:facebook-logo-duotone' width={28} height={28} />
@@ -35,13 +35,13 @@ const Footer = () => {
             className='flex flex-col gap-y-2 title-font font-medium items-center md:mb-0'>
             <Logo className='logo' />
             <div className='flex gap-x-4 mt-1'>
-              <span className='w-[4px] h-[4px] bg-indigo-600 dark:bg-zinc-600  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-500 dark:bg-zinc-500  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-400 dark:bg-zinc-400  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-300 dark:bg-zinc-300  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-400 dark:bg-zinc-400  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-500 dark:bg-zinc-500  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-600 dark:bg-zinc-600  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-800 dark:bg-zinc-800  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-700 dark:bg-zinc-700  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-600 dark:bg-zinc-600  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-500 dark:bg-zinc-500  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-600 dark:bg-zinc-600  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-700 dark:bg-zinc-700  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-800 dark:bg-zinc-800  rounded-full'></span>
             </div>
           </Link>
         </div>
