@@ -1,7 +1,7 @@
 .darkInput {
   input {
-    width: 120px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     &:checked ~ .darkButton .pin {
       transform: translateX(22px);
     }
