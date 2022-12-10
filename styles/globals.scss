@@ -25,6 +25,10 @@ $primary-color-50: #eff6ff;
   fill: #fff !important;
 }
 
+.dark .pinDark {
+  transform: translateX(22px);
+}
+
 @keyframes move {
   100% {
     transform: translate3d(0, 0, 1px) rotate(360deg);
