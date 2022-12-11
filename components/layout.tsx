@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import Footer from './footer/footer'
 import Header from './header/header'
 
@@ -8,11 +9,13 @@ export interface props {
 const Layout = ({ children }: props) => {
   return (
     <>
-      <Header />
-
-      {children}
-
-      <Footer />
+      <div className='min-h-screen flex flex-col justify-between'>
+        <div className=''>
+          <Header />
+          {children}
+        </div>
+        <Footer />
+      </div>
     </>
   )
 }

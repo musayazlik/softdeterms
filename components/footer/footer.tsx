@@ -35,13 +35,13 @@ const Footer = () => {
             className='flex flex-col gap-y-2 title-font font-medium items-center md:mb-0'>
             <Logo className='logo' />
             <div className='flex gap-x-4 mt-1'>
-              <span className='w-[4px] h-[4px] bg-indigo-600 dark:bg-zinc-600  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-500 dark:bg-zinc-500  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-400 dark:bg-zinc-400  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-300 dark:bg-zinc-300  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-400 dark:bg-zinc-400  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-500 dark:bg-zinc-500  rounded-full'></span>
-              <span className='w-[4px] h-[4px] bg-indigo-600 dark:bg-zinc-600  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-800 dark:bg-zinc-800  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-700 dark:bg-zinc-700  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-600 dark:bg-zinc-600  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-500 dark:bg-zinc-500  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-600 dark:bg-zinc-600  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-700 dark:bg-zinc-700  rounded-full'></span>
+              <span className='w-[4px] h-[4px] bg-blue-800 dark:bg-zinc-800  rounded-full'></span>
             </div>
           </Link>
         </div>
