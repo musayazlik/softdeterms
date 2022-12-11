@@ -8,7 +8,7 @@ import { Icon } from '@iconify/react'
 const Footer = () => {
   return (
     <>
-      <footer className='bg-indigo-50 dark:bg-zinc-700/20 text-indigo-600 dark:text-zinc-50 pt-8 lg:pb-4 lg:pt-4 text-center grid grid-cols-12 px-4 sm:px-12 relative z-20'>
+      <footer className='bg-indigo-50 dark:bg-zinc-900 text-blue-600 dark:text-zinc-50 pt-8 lg:pb-4 lg:pt-4 text-center grid grid-cols-12 px-4 sm:px-12 relative z-20'>
         <div className='col-span-12 lg:col-span-4 flex items-start lg:items-center justify-center lg:justify-start h-full gap-x-4'>
           <Link href={'/'} className='hover:scale-125 duration-300'>
             <Icon icon='ph:facebook-logo-duotone' width={28} height={28} />
@@ -55,13 +55,13 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className='py-2 font-semibold bg-blue-800 text-white flex items-center gap-x-3 justify-center text-xs'>
+      <div className='py-2 font-semibold bg-blue-800 dark:bg-blue-900 text-white flex items-center gap-x-3 justify-center text-xs'>
         <p>Designed By </p>
         <Icon icon='ph:heart-duotone' className='text-xl' />
         <Link
           href='https://en.musayazlik.com/'
           target='_blank'
-          className='hover:text-blue-300 duration-300 hover:scale-110'>
+          className='hover:text-blue-300 dark:hover:text-blue-600 duration-300 hover:scale-110'>
           Musa Yazlık
         </Link>
       </div>
