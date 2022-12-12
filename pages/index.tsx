@@ -24,11 +24,8 @@ export default function Home() {
                 SoftDeTerms
               </h1>
               <p className=' bg-zinc-800/20 dark:bg-zinc-900/20 text-zinc-200 text-center px-4 sm:px-14 py-8 backdrop-blur-sm font-medium text-md sm:text-lg leading-7 '>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit, et temporibus repellat nesciunt sapiente cum ducimus
-                soluta saepe similique beatae aspernatur ipsam eos numquam a
-                magni voluptas vitae natus eveniet ut provident dolore
-                voluptates minus?
+                As a software developer, learn words and terms related to the
+                software profession from a single point.
               </p>
             </div>
 

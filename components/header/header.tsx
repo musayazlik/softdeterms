@@ -7,6 +7,8 @@ import Logo from '../../public/logo.svg'
 import { Icon } from '@iconify/react'
 import DarkMode from './darkMode'
 import MobileMenu from './mobileMenu'
+import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
 
 const Header = () => {
   const [menuStatus, setMenuStatus] = useState(false)
@@ -24,6 +26,8 @@ const Header = () => {
     setMenuStatus(!menuStatus)
   }
 
+  const { data: session } = useSession()
+  console.log(session)
   return (
     <>
       <header
@@ -83,19 +87,42 @@ const Header = () => {
           </nav>
 
           <div className='flex '>
-            <div className='mx-auto hidden lg:flex gap-x-4'>
-              <Link
-                href={'/sign-in'}
-                className=' font-medium text-lg tracking-tight px-4 py-2 bg-transparent hover:shadow-lg shadow-blue-700/80 text-blue-600 duration-300 rounded-md hover:bg-blue-700 hover:text-blue-100 hover:shadow-blue-600/40 cursor-pointer dark:text-blue-50 '>
-                Sign in
-              </Link>
+            {session?.user ? (
+              <div className='flex items-center gap-x-2'>
+                <Link href={'/dashboard'} className=''>
+                  <Image
+                    src={session?.user?.image!}
+                    width={40}
+                    height={40}
+                    alt='Avatar Logo'
+                    className='rounded-full'
+                  />
+                  <img src='' alt='' />
+                </Link>
+                <button
+                  onClick={() => signOut()}
+                  className='font-medium text-white bg-red-600 text-lg tracking-tight p-1  hover:shadow-lg shadow-red-700/50 hover:shadow-red-600/40 duration-300 rounded-full border-2 border-red-800 hover:scale-110 cursor-pointer opacity-80 '>
+                  <Icon
+                    icon='material-symbols:exit-to-app-rounded'
+                    width={16}
+                  />
+                </button>
+              </div>
+            ) : (
+              <div className='mx-auto hidden lg:flex gap-x-4'>
+                <Link
+                  href={'/sign-in'}
+                  className=' font-medium text-lg tracking-tight px-4 py-2 bg-transparent hover:shadow-lg shadow-blue-700/80 text-blue-600 duration-300 rounded-md hover:bg-blue-700 hover:text-blue-100 hover:shadow-blue-600/40 cursor-pointer dark:text-blue-50 '>
+                  Sign in
+                </Link>
 
-              <Link
-                href={'/sign-up'}
-                className='font-medium text-lg tracking-tight px-4 py-2 bg-blue-700 hover:shadow-lg shadow-blue-700/50 hover:shadow-blue-600/40 text-blue-100 duration-300 rounded-md outline-offset-4 outline-2 outline-blue-600/50 outline-dotted hover:bg-blue-800 cursor-pointer dark:text-blue-50'>
-                Sign up
-              </Link>
-            </div>
+                <Link
+                  href={'/sign-up'}
+                  className='font-medium text-lg tracking-tight px-4 py-2 bg-blue-700 hover:shadow-lg shadow-blue-700/50 hover:shadow-blue-600/40 text-blue-100 duration-300 rounded-md outline-offset-4 outline-2 outline-blue-600/50 outline-dotted hover:bg-blue-800 cursor-pointer dark:text-blue-50'>
+                  Sign up
+                </Link>
+              </div>
+            )}
 
             <DarkMode
               customClass={
