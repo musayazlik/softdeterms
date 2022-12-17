@@ -15,16 +15,16 @@ const SignIn = () => {
     <>
       {/* <button onClick={() => signIn('github')}>Sign in with Github</button> */}
       <div className=''>
-        <div className='flex  items-center justify-center h-screen text-center relative'>
-          <div className='w-2/4'>
-            <div className='flex flex-col items-center justify-center h-full max-w-md mx-auto'>
+        <div className='flex flex-col items-center justify-center text-center relative'>
+          <div className='w-full relative min-h-[50vh] translate-y-36 z-10 flex justify-center mx-4'>
+            <div className=' flex flex-col items-center justify-center max-w-md mx-auto bg-white/95 dark:bg-zinc-900/95 shadow-zinc-800/20 shadow-lg absolute rounded-xl p-10 sm:outline-double sm:outline-offset-8 sm:outline-8 sm:outline-zinc-900'>
               <h1 className='text-4xl font-bold text-zinc-800 dark:text-zinc-200'>
                 Sign In
               </h1>
               <p className='text-zinc-500 dark:text-zinc-300 mt-2'>
                 Sign in to your account to continue
               </p>
-              <div className='flex flex-col items-center justify-center w-full mt-8 lg:px-20 gap-y-3'>
+              <div className='flex flex-col items-center justify-center w-full mt-8 gap-y-4'>
                 <button
                   onClick={() => signIn('github')}
                   className='inline-flex items-center justify-start w-full gap-x-3 px-4 py-2.5 text-md font-semibold border-2 border-b-4 border-zinc-900 text-white bg-zinc-800 rounded-md hover:bg-zinc-900 focus:outline-none focus-visible:ring-2 duration-300 focus-visible:ring-white focus-visible:ring-opacity-75 hover:scale-105'>
@@ -50,13 +50,14 @@ const SignIn = () => {
               </div>
             </div>
           </div>
-          <div className='w-2/4 min-h-screen relative'></div>
-          <div
-            className='absolute bg-blue-600 w-full h-full shadow-inner'
-            style={{
-              clipPath: 'polygon(70% 0, 100% 0%, 100% 100%, 40% 100%)',
-            }}>
-            <AnimationsCupe />
+          <div className='w-full relative min-h-[50vh] '>
+            <div
+              className='flex absolute bg-blue-600 w-full min-h-[50vh] md:h-full shadow-inner'
+              style={{
+                clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0% 100%)',
+              }}>
+              <AnimationsCupe />
+            </div>
           </div>
         </div>
       </div>
