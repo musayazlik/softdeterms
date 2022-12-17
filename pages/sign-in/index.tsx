@@ -17,7 +17,7 @@ const SignIn = () => {
       <div className=''>
         <div className='flex flex-col items-center justify-center text-center relative'>
           <div className='w-full relative min-h-[50vh] translate-y-36 z-10 flex justify-center mx-4'>
-            <div className=' flex flex-col items-center justify-center max-w-md mx-auto bg-white/95 shadow-zinc-800/20 shadow-lg absolute rounded-xl p-10 sm:outline-double sm:outline-offset-8 sm:outline-8 sm:outline-zinc-900'>
+            <div className=' flex flex-col items-center justify-center max-w-md mx-auto bg-white/95 dark:bg-zinc-900/95 shadow-zinc-800/20 shadow-lg absolute rounded-xl p-10 sm:outline-double sm:outline-offset-8 sm:outline-8 sm:outline-zinc-900'>
               <h1 className='text-4xl font-bold text-zinc-800 dark:text-zinc-200'>
                 Sign In
               </h1>
