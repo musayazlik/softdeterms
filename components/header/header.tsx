@@ -132,12 +132,21 @@ const Header = () => {
             />
 
             <div className='mobileMenu flex lg:hidden font-medium text-lg tracking-tight px-2.5 py-2 bg-blue-700 hover:shadow-lg shadow-blue-700/50 hover:shadow-blue-600/40 text-blue-100 duration-300 rounded-md outline-offset-4 outline-2 outline-blue-600/50 outline-dotted hover:bg-blue-800 cursor-pointer dark:text-blue-50 ml-6'>
-              <Icon
+              {/* <Icon
                 icon='heroicons-outline:menu'
                 width={20}
                 height={20}
                 onClick={() => setMenuStatus(!menuStatus)}
-              />
+              /> */}
+              <button
+                onClick={() => setMenuStatus(!menuStatus)}
+                className={`${
+                  menuStatus && 'active'
+                } flex flex-col items-center justify-center  h-7 w-7 `}>
+                <span className='w-[30px] h-[4px] bg-zinc-100 block rounded-3xl'></span>
+                <span className='w-[30px] h-[4px] bg-zinc-100 rounded-3xl my-1'></span>
+                <span className='w-[30px] h-[4px] bg-zinc-100 rounded-3xl'></span>
+              </button>
             </div>
           </div>
         </div>
@@ -157,7 +166,7 @@ const Header = () => {
               <MobileMenu />
             </nav>
             <div
-              className='mobileMenuWrapper absolute z-30 w-screen h-screen bg-transparent'
+              className='mobileMenuWrapper absolute z-30 w-screen h-screen bg-transparent '
               onClick={() => setMenuStatus(false)}></div>
           </>
         )}
