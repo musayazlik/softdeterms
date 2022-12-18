@@ -43,6 +43,12 @@ const MobileMenu = () => {
           }`}>
           Contact us
         </Link>
+
+        <Link
+          href={'/sign-in'}
+          className='font-medium text-lg tracking-tight px-8 py-3 bg-blue-700 hover:shadow-lg shadow-blue-700/50 hover:shadow-blue-600/40 text-blue-100 duration-300 rounded-md outline-offset-4 outline-2 outline-blue-600/50 outline-dotted hover:bg-blue-800 cursor-pointer dark:text-blue-50'>
+          Sign in
+        </Link>
       </div>
     </>
   )
