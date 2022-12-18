@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 const DarkMode = ({ customClass }: { customClass: string }) => {
   const ref = useRef<HTMLInputElement>(null)
   const darkMode = (e: any): void => {
-    console.log(e.target.checked)
     if (e.target.checked === true) {
       document.documentElement.classList.add('dark')
       localStorage.setItem('darkMode', 'true')
