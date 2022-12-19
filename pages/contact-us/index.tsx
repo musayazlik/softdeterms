@@ -1,37 +1,102 @@
 import React from 'react'
 import Layout from '../../components/layout'
+import PageTitle from '../../components/pageTitle'
 
 const ContactUs = () => {
   return (
     <>
       <Layout>
-        <div className='py-4'>
-          <h1>Contact Us</h1>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Perferendis, obcaecati? Aut molestias facere eius sapiente accusamus
-            amet harum mollitia sit minus reprehenderit explicabo ullam,
-            doloribus illo inventore architecto, blanditiis velit quia maiores
-            magnam et quo facilis esse? Illum, cumque? Aspernatur incidunt
-            maiores provident voluptatem minima, doloribus placeat ipsum
-            perferendis sunt eos, eveniet fugiat quidem! Voluptatibus, corrupti
-            illo sint velit debitis maxime? Optio ut, repellendus similique esse
-            quis beatae, harum a doloremque sit quaerat impedit ipsa,
-            consequatur nostrum non. Quae, facilis suscipit eaque modi
-            blanditiis atque dolor nihil? Dicta culpa perferendis voluptatem,
-            natus beatae sit laboriosam placeat est illo cupiditate assumenda
-            ab! Iste quos sed molestias adipisci dicta explicabo officiis,
-            voluptatibus repudiandae eum inventore suscipit nam error impedit
-            nesciunt earum excepturi officia quo deserunt ab fuga illo. Quidem
-            quos tempora, repellat laborum dicta nisi facilis ad sint sit, quia
-            corrupti nulla. Quisquam unde nam culpa minima quas at praesentium
-            fuga assumenda necessitatibus, odio, dolorum perspiciatis, ipsa eum
-            reiciendis facere ab officiis voluptas earum cum magni recusandae.
-            Quae asperiores ipsum in labore fuga, minus perferendis ab saepe
-            earum tempore quaerat quia sunt dolorum repellat et deleniti nam,
-            nisi non. Sunt, rem quibusdam, reprehenderit eveniet illo officiis
-            cumque laboriosam, ullam aliquam nihil enim.
-          </p>
+        <div className='mt-28 container mx-auto pt-16 pb-28'>
+          <PageTitle title='Contact Us' />
+
+          <form action='' className='grid grid-cols-1 gap-6 mt-20'>
+            <div className='grid grid-cols-1 sm:grid-cols-12 gap-6 px-8 md:px-20 xl:px-60 '>
+              <div className='flex flex-col gap-2 col-span-10 col-start-2'>
+                <label
+                  htmlFor='name'
+                  className='font-semibold text-zinc-900 dark:text-zinc-100'>
+                  Name
+                </label>
+                <input
+                  type='text'
+                  name='name'
+                  id='name'
+                  className='border-2 border-gray-300 rounded-md px-4 py-2 focus:outline-double focus:outline-4 focus:outline-offset-2 focus:outline-zinc-700 dark:focus:outline-blue-600 duration-300 focus:border-zinc-700'
+                />
+              </div>
+            </div>
+            <div className='grid grid-cols-1 sm:grid-cols-12 gap-6 px-8 md:px-20 xl:px-60 '>
+              <div className='flex flex-col gap-2 col-span-10 col-start-2'>
+                <label
+                  htmlFor='surname'
+                  className='font-semibold text-zinc-900 dark:text-zinc-100'>
+                  Surname
+                </label>
+                <input
+                  type='text'
+                  name='surname'
+                  id='surname'
+                  className='border-2 border-gray-300 rounded-md px-4 py-2 focus:outline-double focus:outline-4 focus:outline-offset-2 focus:outline-zinc-700 dark:focus:outline-blue-600 duration-300 focus:border-zinc-700'
+                />
+              </div>
+            </div>
+
+            <div className='grid grid-cols-1 sm:grid-cols-12 gap-6 px-8 md:px-20 xl:px-60 '>
+              <div className='flex flex-col gap-2 col-span-10 col-start-2'>
+                <label
+                  htmlFor='email'
+                  className='font-semibold text-zinc-900 dark:text-zinc-100'>
+                  E-mail
+                </label>
+                <input
+                  type='email'
+                  name='email'
+                  id='email'
+                  className='border-2 border-gray-300 rounded-md px-4 py-2 focus:outline-double focus:outline-4 focus:outline-offset-2 focus:outline-zinc-700 dark:focus:outline-blue-600 duration-300 focus:border-zinc-700'
+                />
+              </div>
+            </div>
+            <div className='grid grid-cols-1 sm:grid-cols-12 gap-6 px-8 md:px-20 xl:px-60 '>
+              <div className='flex flex-col gap-2  col-span-10 col-start-2'>
+                <label
+                  htmlFor='subject'
+                  className='font-semibold text-zinc-900 dark:text-zinc-100'>
+                  Subject
+                </label>
+                <input
+                  type='text'
+                  name='subject'
+                  id='subject'
+                  className='border-2 border-gray-300 rounded-md px-4 py-2 focus:outline-double focus:outline-4 focus:outline-offset-2 focus:outline-zinc-700 dark:focus:outline-blue-600 duration-300 focus:border-zinc-700'
+                />
+              </div>
+            </div>
+
+            <div className='grid grid-cols-1 sm:grid-cols-12 gap-6 px-8 md:px-20 xl:px-60   '>
+              <div className='flex flex-col gap-2 col-span-10 col-start-2'>
+                <label
+                  htmlFor='message'
+                  className='font-semibold text-zinc-900 dark:text-zinc-100'>
+                  Message
+                </label>
+                <textarea
+                  className='border-2 border-gray-300 rounded-md px-4 py-2 focus:outline-double focus:outline-4 focus:outline-offset-2 focus:outline-zinc-700 dark:focus:outline-blue-600 duration-300 focus:border-zinc-700'
+                  rows={6}
+                  id='message'
+                />
+              </div>
+            </div>
+
+            <div className='grid grid-cols-1 sm:grid-cols-12 gap-6 px-8 md:px-20 xl:px-60 '>
+              <div className='flex flex-col gap-2 col-span-10 col-start-2'>
+                <button
+                  type='submit'
+                  className='bg-blue-600 text-white rounded-md px-4 py-2 hover:bg-blue-700 transition duration-200'>
+                  Send
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </Layout>
     </>
