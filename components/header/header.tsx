@@ -31,7 +31,7 @@ const Header = () => {
     <>
       <header
         className={`shadow-blue-300/20 bg-white shadow-lg dark:bg-zinc-900/100 text-blue-600 dark:text-zinc-50 dark:shadow-zinc-900/40 w-full fixed z-50 min-h-[90px] `}>
-        <div className='xl:container mx-auto flex flex-wrap p-5 flex-row items-center justify-between '>
+        <div className='xl:container mx-auto flex flex-wrap py-5 px-6 flex-row items-center justify-between '>
           <Link
             href={'/'}
             className='flex flex-col gap-y-2 title-font font-medium items-center  md:mb-0'>
