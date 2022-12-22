@@ -1,5 +1,6 @@
 import React from 'react'
-import BlogCard from '../../../blog/blogCard'
+import Pagination from '../../../pagination'
+import BlogCard from './blogCard'
 
 const BlogList = () => {
   return (
@@ -9,6 +10,10 @@ const BlogList = () => {
         <BlogCard />
         <BlogCard />
         <BlogCard />
+
+        <div className='flex justify-center'>
+          <Pagination />
+        </div>
       </div>
     </>
   )

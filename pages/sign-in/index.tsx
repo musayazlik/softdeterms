@@ -26,19 +26,31 @@ const SignIn = () => {
               </p>
               <div className='flex flex-col items-center justify-center w-full mt-8 gap-y-4'>
                 <button
-                  onClick={() => signIn('github')}
+                  onClick={() =>
+                    signIn('github', {
+                      redirect: false,
+                    })
+                  }
                   className='inline-flex items-center justify-start w-full gap-x-3 px-4 py-2.5 text-md font-semibold border-2 border-b-4 border-zinc-900 text-white bg-zinc-800 rounded-md hover:bg-zinc-900 focus:outline-none focus-visible:ring-2 duration-300 focus-visible:ring-white focus-visible:ring-opacity-75 hover:scale-105'>
                   <Icon icon='ph:github-logo-duotone' width={30} />
                   Sign in with Github
                 </button>
                 <button
-                  onClick={() => signIn('google')}
+                  onClick={() =>
+                    signIn('google', {
+                      redirect: false,
+                    })
+                  }
                   className='inline-flex items-center justify-start w-full gap-x-3.5 px-4 py-2.5 text-md border-2 border-b-4 border-zinc-400 font-semibold text-zinc-600 bg-white rounded-md duration-300 hover:bg-zinc-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 hover:scale-105'>
                   <Icon icon='flat-color-icons:google' width={28} />
                   Sign in with google
                 </button>
                 <button
-                  onClick={() => signIn('facebook')}
+                  onClick={() =>
+                    signIn('facebook', {
+                      redirect: false,
+                    })
+                  }
                   className='inline-flex items-center justify-start w-full gap-x-3 px-4 py-2.5 text-md border-2 border-b-4 border-blue-800 font-semibold text-white bg-blue-600 rounded-md duration-300 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 hover:scale-105'>
                   <Icon
                     icon='ph:facebook-logo-duotone'
