@@ -16,7 +16,7 @@ const HomeContext = () => {
               <Icon
                 icon='ph:funnel-duotone'
                 fontSize={40}
-                className={`cursor-pointer dark:text-zinc-300 bg-zinc-800 shadow-zinc-400/10 shadow-sm  p-2 rounded-full duration-200
+                className={`cursor-pointer dark:text-zinc-300 bg-zinc-200 dark:bg-zinc-800 shadow-zinc-400/10 shadow-sm  p-2 rounded-full duration-200
                 ${
                   filterStatus
                     ? 'shadow-sm shadow-zinc-300/60 bg-zinc-300 scale-105 dark:text-blue-800 dark:bg-blue-600 dark:border-2 dark:border-blue-800'
