@@ -7,8 +7,9 @@ import Logo from '../../public/logo.svg'
 import { Icon } from '@iconify/react'
 import DarkMode from './darkMode'
 import MobileMenu from './mobileMenu'
-import { signOut, useSession } from 'next-auth/react'
+import { getCsrfToken, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { GetServerSidePropsContext } from 'next'
 
 const Header = () => {
   const [menuStatus, setMenuStatus] = useState(false)
@@ -27,6 +28,8 @@ const Header = () => {
   }
 
   const { data: session } = useSession()
+  console.log(session)
+
   return (
     <>
       <header

@@ -1,56 +1,60 @@
+import { Icon } from '@iconify/react'
 import { useState } from 'react'
+import Search from '../../search'
 import BlogList from './blogList'
-import ListItem from './listItem'
+import CategoryList from './categoryList'
 
 const HomeContext = () => {
-  const [category, setCategory] = useState<string>('')
-  const [activeCategory, setActiveCategory] = useState<String>('')
+  const [filterStatus, setFilterStatus] = useState<boolean>(false)
   return (
     <>
       <div className='container mx-auto py-20 px-6 '>
         <div className=' grid grid-cols-12 bg-white dark:bg-zinc-800 outline-double outline-zinc-50 dark:outline-zinc-900 outline-offset-4 outline-8  rounded-xl border-2 border-zinc-50 dark:border-zinc-900 gap-5 '>
-          <div className='col-span-12 lg:col-span-3 bg-zinc-100 dark:bg-zinc-900 py-4 lg:rounded-tl-xl lg:rounded-bl-xl rounded-tr-xl rounded-tl-xl '>
-            <div className='flex lg:flex-col items-center'>
-              <ul className=' overflow-auto gap-4 pb-6 pt-2 lg:py-0 lg:w-full text-sm font-medium text-zinc-900 dark:text-white flex lg:flex-col lg:space-y-6 px-4'>
-                <ListItem
-                  text='Front-end Developer'
-                  category={category}
-                  setCategory={setCategory}
-                  setActiveCategory={setActiveCategory}
-                  activeCategory={activeCategory}
+          <div className='col-span-12 xl:col-span-3 bg-zinc-100 dark:bg-zinc-900 xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-tr-none rounded-tr-xl rounded-tl-xl flex justify-between px-5 xl:px-0 items-stretch py-4 xl:py-0 '>
+            <CategoryList />
+            <div className='flex xl:hidden items-center relative'>
+              <button
+                type='button'
+                className={` duration-300 rounded-full w-10 h-10 flex justify-center items-center
+          ${
+            filterStatus
+              ? 'bg-blue-600 text-blue-300'
+              : 'bg-zinc-200 text-zinc-500 dark:bg-zinc-800'
+          }
+          
+          `}
+                onClick={() => setFilterStatus(!filterStatus)}>
+                <Icon
+                  icon='icon-park-twotone:filter'
+                  className=''
+                  fontSize={24}
                 />
-                <ListItem
-                  text='Back-end Developer'
-                  category={category}
-                  setCategory={setCategory}
-                  setActiveCategory={setActiveCategory}
-                  activeCategory={activeCategory}
-                />
-                <ListItem
-                  text='Mobile Developer'
-                  category={category}
-                  setCategory={setCategory}
-                  setActiveCategory={setActiveCategory}
-                  activeCategory={activeCategory}
-                />
-                <ListItem
-                  text='Project Management'
-                  category={category}
-                  setCategory={setCategory}
-                  setActiveCategory={setActiveCategory}
-                  activeCategory={activeCategory}
-                />
-                <ListItem
-                  text='Software Testing'
-                  category={category}
-                  setCategory={setCategory}
-                  setActiveCategory={setActiveCategory}
-                  activeCategory={activeCategory}
-                />
-              </ul>
+              </button>
+              {filterStatus && (
+                <div className='text-sm font-semibold text-zinc-900 dark:text-zinc-400 ml-2 absolute top-12 bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-900 rounded-md min-w-[280px] -left-5 z-20 dark:shadow-lg dark:shadow-zinc-900/80 shadow-lg shadow-zinc-400/40'>
+                  <ul>
+                    <li className='py-3 px-4 hover:bg-blue-600 duration-300 hover:text-blue-900 first:rounded-t-md cursor-pointer'>
+                      Frontend Developer
+                    </li>
+                    <li className='py-3 px-4 hover:bg-blue-600 duration-300 hover:text-blue-900 cursor-pointer'>
+                      Backend Developer
+                    </li>
+                    <li className='py-3 px-4 hover:bg-blue-600 duration-300 hover:text-blue-900 cursor-pointer'>
+                      Mobile Developer
+                    </li>
+                    <li className='py-3 px-4 hover:bg-blue-600 duration-300 hover:text-blue-900 cursor-pointer'>
+                      Project Management
+                    </li>
+                    <li className='py-3 px-4 hover:bg-blue-600 duration-300 hover:text-blue-900 last:rounded-b-md first:rounded-t-md cursor-pointer'>
+                      Software Testing
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
+            <Search />
           </div>
-          <div className='col-span-12 lg:col-span-9 lg:py-4'>
+          <div className='col-span-12 xl:col-span-9 lg:py-4'>
             <BlogList />
           </div>
         </div>
