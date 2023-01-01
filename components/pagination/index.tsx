@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 
 export default function App() {
@@ -31,15 +32,15 @@ export default function App() {
         items.push(
           <li
             key={number}
-            className={`page-item flex items-center justify-center border-2  rounded-md cursor-default ${
+            className={`page-item flex items-center justify-center border-2 border-b-4 rounded-md cursor-default duration-500 hover:scale-105 hover:duration-200 ${
               pagination.currentPage === number
-                ? 'outline-dashed outline-2 outline-offset-4 outline-zinc-800 border-zinc-900 bg-zinc-600 text-white '
-                : 'border-zinc-300'
+                ? 'outline-dashed outline-2 sm:outline-offset-4 outline-offset-2 outline-zinc-800 dark:outline-zinc-900 border-zinc-900 bg-zinc-400 dark:bg-blue-700 dark:text-blue-900  '
+                : 'border-zinc-300 dark:border-zinc-900'
             }`}
             onClick={() => {
               paginationPage(number)
             }}>
-            <a className='page-link w-10  h-9 flex items-center justify-center cursor-pointer'>
+            <a className='text-xs sm:text-lg font-medium page-link min-h-[24px] min-w-[24px] sm:min-h-[40px] sm:min-w-[40px]  flex items-center justify-center cursor-pointer dark:text-zinc-200 duration-500 '>
               {number}
             </a>
           </li>
@@ -48,7 +49,7 @@ export default function App() {
         if (threePoints === true) {
           items.push(
             <li key={number} className='page-item threePoints'>
-              <a className='page-link'>...</a>
+              <a className='page-link '>...</a>
             </li>
           )
           threePoints = false
@@ -78,52 +79,36 @@ export default function App() {
     <>
       <div className='paginationArea'>
         <nav className=''>
-          <ul className='pagination flex gap-4 items-center'>
-            <li className='page-item previous'>
+          <ul className='pagination flex gap-2 sm:gap-4 items-center'>
+            <li className='page-item previous hover:scale-105 duration-200'>
               <a
-                className='page-link flex bg-zinc-600 px-3 py-2 rounded-md text-white cursor-pointer'
+                className='page-link flex justify-center items-center bg-blue-700 min-h-[28px] min-w-[28px] sm:px-4 sm:py-2 rounded-md text-white cursor-pointer space-x-1 border-2 border-b-4 border-blue-800'
                 onClick={() => {
                   paginationPrev()
                 }}>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='feather feather-chevron-left'>
-                  <polyline points='15 18 9 12 15 6'></polyline>
-                </svg>
-                <span>Prev</span>
+                <Icon
+                  icon='ph:caret-left-duotone'
+                  inline={true}
+                  className='text-xl'
+                />
+                <span className='hidden sm:flex text-xl'>Prev</span>
               </a>
             </li>
 
             {paginationArea()}
 
-            <li className='page-item next'>
+            <li className='page-item next hover:scale-105 duration-200'>
               <a
                 onClick={() => {
                   paginationNext()
                 }}
-                className='page-link flex bg-zinc-600 px-3 py-2 rounded-md text-white cursor-pointer'>
-                <span>Next</span>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='feather feather-chevron-right'>
-                  <polyline points='9 18 15 12 9 6'></polyline>
-                </svg>
+                className='page-link flex justify-center items-center bg-blue-700 min-h-[28px] min-w-[28px] sm:px-4 sm:py-2 rounded-md text-white cursor-pointer space-x-1 border-2 border-b-4 border-blue-800'>
+                <span className='hidden sm:flex text-xl'>Next</span>
+                <Icon
+                  icon='ph:caret-right-duotone'
+                  inline={true}
+                  className='text-xl'
+                />
               </a>
             </li>
           </ul>

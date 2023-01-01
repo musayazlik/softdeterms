@@ -5,7 +5,7 @@ import BlogCard from './blogCard'
 const BlogList = () => {
   return (
     <>
-      <div className='grid p-4 gap-y-6'>
+      <div className='flex flex-col sm:grid p-4 gap-y-6'>
         <BlogCard />
         <BlogCard />
         <BlogCard />
