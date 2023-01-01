@@ -41,10 +41,10 @@ const BlogCard = () => {
         </div>
         <div className='postContext sm:col-span-9 col-span-10 flex flex-col justify-between'>
           <div className='postDetail mb-6 sm:mb-0 text-center sm:text-start'>
-            <h3 className='text-2xl font-bold text-zinc-900 dark:text-zinc-400 mb-2'>
+            <h3 className='text-lg sm:text-2xl mb-4 font-bold text-zinc-900 dark:text-zinc-400 '>
               Lorem ipsum dolor sit amet consectetur.
             </h3>
-            <p className='text-base text-zinc-700 dark:text-zinc-400'>
+            <p className='text-sm sm:text-lg text-zinc-700 dark:text-zinc-400 mb-5'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
               quae eaque ullam quisquam esse?
             </p>
