@@ -28,7 +28,6 @@ const Header = () => {
   }
 
   const { data: session } = useSession()
-  console.log(session)
 
   return (
     <>
