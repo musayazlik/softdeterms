@@ -3,6 +3,8 @@ import '../styles/header.scss'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import MaintenanceMode from '../components/maintenanceMode'
+import { Provider } from 'react-redux'
+import store from '../store'
 
 export default function App({
   Component,
@@ -12,9 +14,11 @@ export default function App({
     return <MaintenanceMode />
   } else {
     return (
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
+      <Provider store={store}>
+        <SessionProvider session={session}>
+          <Component {...pageProps} />
+        </SessionProvider>
+      </Provider>
     )
   }
 }
