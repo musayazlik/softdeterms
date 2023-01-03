@@ -8,7 +8,7 @@ const HomeContext = () => {
   const [filterStatus, setFilterStatus] = useState<boolean>(false)
   return (
     <>
-      <div className='container mx-auto py-20 px-6 '>
+      <div className='container mx-auto pt-6 pb-20 px-6 '>
         <div className=' grid grid-cols-12 bg-white dark:bg-zinc-800 outline-double outline-zinc-50 dark:outline-zinc-900 outline-offset-4 outline-8  rounded-xl border-2 border-zinc-50 dark:border-zinc-900 gap-5 '>
           <div className='col-span-12 xl:col-span-3 bg-zinc-100 dark:bg-zinc-900 xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-tr-none rounded-tr-xl rounded-tl-xl flex justify-between px-5 xl:px-0 items-stretch py-4 xl:py-0 '>
             <CategoryList />
