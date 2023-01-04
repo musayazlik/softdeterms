@@ -64,7 +64,9 @@ export const authOptions = {
       },
     }),
   ],
-
+  pages: {
+    signIn: '/sign-in',
+  },
   callbacks: {
     session: async ({ session, token, user }: any) => {
       if (session?.user) {

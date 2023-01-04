@@ -1,16 +1,52 @@
-import React from 'react'
-import { useSession, signIn, signOut } from 'next-auth/react'
+import React, { useEffect } from 'react'
+import {
+  useSession,
+  signIn,
+  signOut,
+  getSession,
+  getProviders,
+} from 'next-auth/react'
 import { useRouter } from 'next/router'
 import AnimationsCupe from '../../components/home/animationsCupe'
 import { Icon } from '@iconify/react'
+import Swal from 'sweetalert2'
 
-const SignIn = () => {
-  const { data: session, status } = useSession()
+const SignIn = ({ providers }: any) => {
+  const { data: session } = useSession()
   const router = useRouter()
+  const { error } = useRouter().query
 
-  if (status === 'authenticated') {
-    router.push('/')
+  interface IProviders {
+    [key: string]: any
   }
+
+  const errors: IProviders = {
+    Signin: 'Try signing with a different account.',
+    OAuthSignin: 'Try signing with a different account.',
+    OAuthCallback: 'Try signing with a different account.',
+    OAuthCreateAccount: 'Try signing with a different account.',
+    EmailCreateAccount: 'Try signing with a different account.',
+    Callback: 'Try signing with a different account.',
+    OAuthAccountNotLinked:
+      'To confirm your identity, sign in with the same account you used originally.',
+    EmailSignin: 'Check your email address.',
+    CredentialsSignin:
+      'Sign in failed. Check the details you provided are correct.',
+    default: 'Unable to sign in.',
+  }
+
+  useEffect(() => {
+    const SignInError = ({ error }: any) => {
+      const errorMessage = error && (errors[error] ?? errors.default)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: errorMessage,
+      })
+    }
+    SignInError({ error })
+  }, [error])
+
   return (
     <>
       {/* <button onClick={() => signIn('github')}>Sign in with Github</button> */}
@@ -78,3 +114,22 @@ const SignIn = () => {
 }
 
 export default SignIn
+
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context)
+  const providers: any = await getProviders()
+  if (session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+  return {
+    props: {
+      session,
+      providers,
+    },
+  }
+}
