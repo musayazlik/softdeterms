@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useEffect } from 'react'
 
+type Id = string
+
 const PostCreate = ({ csrfToken }: any) => {
   const { data: session } = useSession()
   const router = useRouter()
@@ -37,6 +39,10 @@ const PostCreate = ({ csrfToken }: any) => {
     }
   }
 
+  console.log('====================================')
+  console.log(session?.user)
+  console.log('====================================')
+
   return (
     <Layout>
       <div className='container mx-auto mt-40'>
@@ -46,7 +52,7 @@ const PostCreate = ({ csrfToken }: any) => {
             <form className='mb-20' onSubmit={(e) => createPost(e)}>
               <div className='mb-6'>
                 <input type='hidden' name='csrfToken' value={csrfToken} />
-                <input type='hidden' name='userId' value={session?.user?.id} />
+                <input type='hidden' name='userId' value={'sfgrggdfgdfg'} />
                 <div className='mb-6'>
                   <label
                     htmlFor='title'
