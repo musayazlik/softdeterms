@@ -5,8 +5,11 @@ import Layout from '../components/layout'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import HomeContext from '../components/home/homeContext'
+import axios from 'axios'
+import { useSession } from 'next-auth/react'
 
 export default function Home() {
+  const { data: session } = useSession()
   return (
     <div className='App'>
       <Head>
@@ -90,6 +93,18 @@ export default function Home() {
                 </Link>
               </div>
             </section>
+          </div>
+          <div className='container mx-auto mt-14'>
+            <div className='flex items-center justify-end mr-8 '>
+              {session && (
+                <Link
+                  href={'/post-create'}
+                  className='flex gap-2 items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white dark:text-blue-900 font-semibold text-xl rounded-md border-2 border-b-4 border-blue-800 hover:scale-105 duration-300 shadow-md shadow-blue-600/40 dark:shadow-blue-800/40'>
+                  <Icon icon='ic:twotone-add-circle' fontSize={28} />
+                  Post Create
+                </Link>
+              )}
+            </div>
           </div>
           <HomeContext />
         </main>

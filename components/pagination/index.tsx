@@ -1,20 +1,8 @@
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 
-export default function App() {
-  const [data, setData] = useState([])
-  const [pagination, setPagination] = useState({
-    currentPage: 1,
-    dataShowLenght: 3,
-  })
-  const totalPage = Math.ceil(data.length / pagination.dataShowLenght)
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((res) => res.json())
-      .then((data) => setData(data))
-  }, [])
-
+export default function App({ dataLenght, pagination, setPagination }: any) {
+  const totalPage = Math.ceil(dataLenght / pagination.dataShowLenght)
   const paginationPage = (page: number) => {
     setPagination({ ...pagination, currentPage: page })
   }

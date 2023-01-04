@@ -5,42 +5,83 @@ import GoogleProvider from 'next-auth/providers/google'
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter'
 import clientPromise from '../../../lib/mongodb'
 export const authOptions = {
-  adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise, {
+    databaseName: process.env.DB_NAME,
+  }),
+
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
-      authorization: {
+      profile(profile: any) {
+        return {
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.avatar_url,
+          role: profile.email === process.env.ADMIN_ROLE ? 'admin' : 'user',
+          emailVerified: profile.email_verified,
+          bio: profile.bio || '',
+        }
+      },
+
+      /*       authorization: {
         params: {
           prompt: 'consent',
           access_type: 'offline',
           response_type: 'code',
         },
-      },
+      }, */
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
-      authorization: {
-        params: {
-          prompt: 'consent',
-          access_type: 'offline',
-          response_type: 'code',
-        },
+      profile(profile: any) {
+        return {
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.avatar_url,
+          role: profile.email === process.env.ADMIN_ROLE ? 'admin' : 'user',
+          emailVerified: profile.email_verified,
+          bio: profile.bio || '',
+        }
       },
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      authorization: {
-        params: {
-          prompt: 'consent',
-          access_type: 'offline',
-          response_type: 'code',
-        },
+      profile(profile: any) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+          role: profile.email === process.env.ADMIN_ROLE ? 'admin' : 'user',
+          emailVerified: profile.email_verified,
+          bio: profile.bio || '',
+        }
       },
     }),
   ],
+
+  callbacks: {
+    async session({ session, token, user }: any): Promise<any> {
+      if (session?.user) {
+        session.user.id = token.uid
+      }
+      return session
+    },
+    async jwt({ token, user }: any): Promise<any> {
+      if (user) {
+        token.uid = user.id
+      }
+      return token
+    },
+  },
+  session: {
+    strategy: 'jwt',
+  } as any,
 
   secret: process.env.NEXTAUTH_SECRET,
 }

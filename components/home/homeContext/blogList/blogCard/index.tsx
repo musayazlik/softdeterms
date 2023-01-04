@@ -3,13 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const BlogCard = () => {
+const BlogCard = ({ post }: any) => {
+  const date = post.createdAt.split('T')[0]
   return (
     <>
       <div className='flex flex-col sm:grid sm:grid-cols-12 px-4 py-6 gap-8 bg-zinc-50 dark:bg-zinc-800 rounded-lg border-2 border-zinc-300/40 dark:border-zinc-900/80 hover:bg-zinc-100 duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-zinc-900/50 hover:cursor-pointer hover:relative hover:border-in'>
         <div className='avatar flex flex-col items-center sm:col-span-3 col-span-12 xl:col-span-2'>
           <Image
-            src='https://ui-avatars.com/api/?background=52525b&name=John+Doe&size=100&color=fff'
+            src={post.userId.image || '/images/avatar.png'}
             alt='avatar'
             width={100}
             height={100}
@@ -18,7 +19,7 @@ const BlogCard = () => {
           <div className='postAuthor flex sm:hidden gap-3 mt-4 mb-2 justify-center items-center'>
             <span className='text-lg font-semibold text-zinc-900 dark:text-zinc-400'>
               {' '}
-              John Doe
+              {post.userId.name}
             </span>
           </div>
           <div className='userSocial sm:mt-6 flex gap-2'>
@@ -42,11 +43,10 @@ const BlogCard = () => {
         <div className='postContext sm:col-span-9 col-span-10 flex flex-col justify-between'>
           <div className='postDetail mb-6 sm:mb-0 text-center sm:text-start'>
             <h3 className='text-lg sm:text-2xl mb-4 font-bold text-zinc-900 dark:text-zinc-400 '>
-              Lorem ipsum dolor sit amet consectetur.
+              {post.title}
             </h3>
             <p className='text-sm sm:text-lg text-zinc-700 dark:text-zinc-400 mb-5'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              quae eaque ullam quisquam esse?
+              {post.description}
             </p>
           </div>
 
@@ -60,7 +60,7 @@ const BlogCard = () => {
               />
               <span className='text-sm sm:text-base text-zinc-900 dark:text-zinc-400'>
                 {' '}
-                12/12/2021
+                {date}
               </span>
             </div>
             <div className='postAuthor hidden sm:flex gap-3 justify-center items-center'>
@@ -72,7 +72,7 @@ const BlogCard = () => {
               />
               <span className='text-sm sm:text-base text-zinc-900 dark:text-zinc-400'>
                 {' '}
-                John Doe
+                {post.author}
               </span>
             </div>
 
@@ -85,7 +85,7 @@ const BlogCard = () => {
               />
               <span className='text-sm sm:text-base text-zinc-900 dark:text-zinc-400'>
                 {' '}
-                12
+                {post.comments}
               </span>
             </div>
           </div>
