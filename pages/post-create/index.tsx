@@ -1,22 +1,12 @@
 import Layout from '@components/layout'
 import PageTitle from '@components/pageTitle'
-import { useSession } from 'next-auth/react'
+import { getSession, useSession } from 'next-auth/react'
 import { getCsrfToken } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import React from 'react'
-import { useEffect } from 'react'
-
-type Id = string
 
 const PostCreate = ({ csrfToken }: any) => {
-  const { data: session } = useSession()
   const router = useRouter()
-
-  useEffect(() => {
-    if (!session) {
-      router.push('/')
-    }
-  }, [session])
+  const { data: session } = useSession()
 
   const createPost = async (e: any) => {
     e.preventDefault()
@@ -39,10 +29,6 @@ const PostCreate = ({ csrfToken }: any) => {
     }
   }
 
-  console.log('====================================')
-  console.log(session?.user)
-  console.log('====================================')
-
   return (
     <Layout>
       <div className='container mx-auto mt-40'>
@@ -52,7 +38,8 @@ const PostCreate = ({ csrfToken }: any) => {
             <form className='mb-20' onSubmit={(e) => createPost(e)}>
               <div className='mb-6'>
                 <input type='hidden' name='csrfToken' value={csrfToken} />
-                <input type='hidden' name='userId' value={'sfgrggdfgdfg'} />
+
+                <input type='hidden' name='userId' value={session?.user?.id} />
                 <div className='mb-6'>
                   <label
                     htmlFor='title'
@@ -127,8 +114,17 @@ export default PostCreate
 
 export async function getServerSideProps(context: any) {
   const csrfToken = await getCsrfToken(context)
+  const session = await getSession(context)
 
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
   return {
-    props: { csrfToken },
+    props: { csrfToken, session },
   }
 }
