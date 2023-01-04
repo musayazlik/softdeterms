@@ -66,22 +66,13 @@ export const authOptions = {
   ],
 
   callbacks: {
-    async session({ session, token, user }: any): Promise<any> {
+    session: async ({ session, token, user }: any) => {
       if (session?.user) {
-        session.user.id = token.uid
+        session.user.id = user.id
       }
       return session
     },
-    async jwt({ token, user }: any): Promise<any> {
-      if (user) {
-        token.uid = user.id
-      }
-      return token
-    },
   },
-  session: {
-    strategy: 'jwt',
-  } as any,
 
   secret: process.env.NEXTAUTH_SECRET,
 }
