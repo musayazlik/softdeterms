@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { GetServerSideProps } from 'next'
+import { useSelector } from 'react-redux'
 import Pagination from '../../../pagination'
-import { useSelector, useDispatch } from 'react-redux'
+
 import BlogCard from './blogCard'
-import axios from 'axios'
-import { SET_POSTS } from '../../../../store/postsSlices'
 
 const BlogList = () => {
   const [pagination, setPagination] = useState({
     currentPage: 1,
     dataShowLenght: 4,
   })
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_URL}/api/posts`).then((res) => {
-      dispatch(SET_POSTS(res.data))
-    })
-  }, [])
-
-  const data = useSelector((state: any) => state.posts.data.data)
+  const data = useSelector((state: any) => state.posts.data.posts)
 
   return (
     <>

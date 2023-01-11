@@ -5,6 +5,10 @@ const CategoriesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  queue: {
+    type: Number,
+    required: true,
+  },
 })
 
 export default mongoose.models.Categories ||

@@ -14,9 +14,9 @@ export default async function handler(
     case 'GET':
       try {
         const data = await Categories.find({})
-        res.status(200).json({ success: true, data: data })
+        res.status(200).json({ data })
       } catch (error: any) {
-        res.status(500).json({ success: false, error: error?.message })
+        res.status(500).json({ error: error?.message })
       }
       break
 
