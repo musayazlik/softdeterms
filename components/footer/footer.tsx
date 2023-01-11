@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 
 /* Image */
-import Logo from '../../public/logo.svg'
 import { Icon } from '@iconify/react'
 
 const Footer = () => {
@@ -35,7 +34,7 @@ const Footer = () => {
               <Link
                 href={'/'}
                 className='flex flex-col gap-y-2 title-font font-medium items-center md:mb-0'>
-                <Logo className='logo' />
+                <p>Logo</p>
                 <div className='flex gap-x-4 mt-1'>
                   <span className='w-[4px] h-[4px] bg-blue-800 dark:bg-zinc-800  rounded-full'></span>
                   <span className='w-[4px] h-[4px] bg-blue-700 dark:bg-zinc-700  rounded-full'></span>
