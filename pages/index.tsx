@@ -7,8 +7,15 @@ import Link from 'next/link'
 import HomeContext from '../components/home/homeContext'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
+import { useSelector, useDispatch } from 'react-redux'
+import { SET_POSTS } from 'store/postsSlices'
 
-export default function Home() {
+import { wrapper } from 'store'
+
+export default function Home({ data }: any) {
+  const dispatch = useDispatch()
+  dispatch(SET_POSTS(data))
+
   const { data: session } = useSession()
   return (
     <div className='App'>
@@ -112,3 +119,13 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts`)
+    const data = await res.json()
+    return {
+      props: { data },
+    }
+  }
+)

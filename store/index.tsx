@@ -1,10 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers, createStore } from '@reduxjs/toolkit'
+import { Store } from 'redux'
+import { createWrapper } from 'next-redux-wrapper'
 import postsReducer from './postsSlices'
 
-export const store = configureStore({
-  reducer: {
-    posts: postsReducer,
-  },
+export interface State {
+  posts: any
+}
+
+const reducer = combineReducers({
+  posts: postsReducer,
 })
 
-export default store
+const makeStore = () => configureStore({ reducer })
+
+export const wrapper = createWrapper<Store<State>>(makeStore, { debug: true })

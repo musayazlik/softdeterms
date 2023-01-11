@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import React, { useEffect, useState } from 'react'
 import ListItem from './listItem'
 
-const CategoryList = () => {
+const CategoryList = ({ data }: any) => {
   const [categories, setCategories] = useState<any>([])
   const [category, setCategory] = useState<string>('')
   const [activeCategory, setActiveCategory] = useState<String>('All')
@@ -13,8 +13,6 @@ const CategoryList = () => {
       setCategories(res.data)
     })
   }, [])
-
-  console.log(categories)
 
   return (
     <div className='hidden xl:flex lg:flex-col items-center w-full '>
@@ -34,3 +32,16 @@ const CategoryList = () => {
 }
 
 export default CategoryList
+
+export const getServerSideProps: GetServerSideProps<{ data: any }> = async (
+  context
+) => {
+  const res = await fetch('https://localhost:3000/api/categories')
+  const data: any = await res.json()
+
+  return {
+    props: {
+      data,
+    },
+  }
+}

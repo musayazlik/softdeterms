@@ -13,15 +13,15 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const postsData = await Posts.find({}).populate({
+        const posts = await Posts.find({}).populate({
           path: 'userId',
           model: Users,
           select: ['name', 'image', 'bio', 'role'],
         })
 
-        res.status(200).json({ success: true, data: postsData })
+        res.status(200).json({ posts })
       } catch (error: any) {
-        res.status(500).json({ success: false, error: error?.message })
+        res.status(500).json({ error: error?.message })
       }
       break
     case 'POST':
