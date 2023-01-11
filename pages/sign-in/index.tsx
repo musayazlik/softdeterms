@@ -44,7 +44,9 @@ const SignIn = ({ providers }: any) => {
         text: errorMessage,
       })
     }
-    SignInError({ error })
+    if (error) {
+      SignInError({ error })
+    }
   }, [error])
 
   return (
