@@ -11,10 +11,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { SET_POSTS } from 'store/postsSlices'
 
 import { wrapper } from 'store'
+import { SET_CATEGORIES } from 'store/categoriesSlices'
 
-export default function Home({ data }: any) {
+export default function Home({ postsData, categoriesData }: any) {
   const dispatch = useDispatch()
-  dispatch(SET_POSTS(data))
+  dispatch(SET_POSTS(postsData) as any)
+  dispatch(SET_CATEGORIES(categoriesData) as any)
 
   const { data: session } = useSession()
   return (
@@ -122,10 +124,14 @@ export default function Home({ data }: any) {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts`)
-    const data = await res.json()
+    const postsRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts`)
+    const categoriesRes = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/categories`
+    )
+    const categoriesData = await categoriesRes.json()
+    const postsData = await postsRes.json()
     return {
-      props: { data },
+      props: { postsData, categoriesData },
     }
   }
 )
