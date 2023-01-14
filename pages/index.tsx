@@ -14,9 +14,9 @@ import { wrapper } from 'store'
 import { SET_CATEGORIES } from 'store/categoriesSlices'
 
 export default function Home({ postsData, categoriesData }: any) {
-  const dispatch = useDispatch()
-  dispatch(SET_POSTS(postsData) as any)
-  dispatch(SET_CATEGORIES(categoriesData) as any)
+  // const dispatch = useDispatch()
+  // dispatch(SET_POSTS(postsData) as any)
+  // dispatch(SET_CATEGORIES(categoriesData) as any)
 
   const { data: session } = useSession()
   return (
@@ -130,6 +130,8 @@ export const getServerSideProps = wrapper.getServerSideProps(
     )
     const categoriesData = await categoriesRes.json()
     const postsData = await postsRes.json()
+    await store.dispatch(SET_CATEGORIES(categoriesData.data) as any)
+    await store.dispatch(SET_POSTS(postsData.posts) as any)
     return {
       props: { postsData, categoriesData },
     }

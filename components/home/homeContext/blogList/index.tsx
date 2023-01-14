@@ -9,7 +9,7 @@ const BlogList = () => {
     currentPage: 1,
     dataShowLenght: 4,
   })
-  const data = useSelector((state: any) => state.posts.data.posts)
+  const data = useSelector((state: any) => state.posts.data)
 
   return (
     <>

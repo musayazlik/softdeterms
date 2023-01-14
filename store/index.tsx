@@ -1,6 +1,6 @@
 import { configureStore, combineReducers, createStore } from '@reduxjs/toolkit'
-import { Store } from 'redux'
-import { createWrapper } from 'next-redux-wrapper'
+import { AnyAction, Store } from 'redux'
+import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import postsReducer from './postsSlices'
 import categoriesReducer from './categoriesSlices'
 
@@ -8,10 +8,22 @@ export interface State {
   posts: any
 }
 
-const reducer = combineReducers({
+const reducers = combineReducers({
   posts: postsReducer,
   categories: categoriesReducer,
 })
+
+const reducer = (state: any, action: AnyAction) => {
+  if (action.type === HYDRATE) {
+    let nextState = {
+      ...state,
+      ...action.payload,
+    }
+    return nextState
+  } else {
+    return reducers(state, action)
+  }
+}
 
 const makeStore = () => configureStore({ reducer })
 

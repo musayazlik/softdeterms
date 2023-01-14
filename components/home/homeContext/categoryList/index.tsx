@@ -9,7 +9,7 @@ const CategoryList = ({ data }: any) => {
   const [activeCategory, setActiveCategory] = useState<String>('All')
   const dispatch = useDispatch()
 
-  const categories = useSelector((state: any) => state.categories.data.data)
+  const categories = useSelector((state: any) => state.categories.data)
 
   return (
     <div className='hidden xl:flex lg:flex-col items-center w-full '>
