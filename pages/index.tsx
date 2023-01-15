@@ -14,10 +14,6 @@ import { wrapper } from 'store'
 import { SET_CATEGORIES } from 'store/categoriesSlices'
 
 export default function Home({ postsData, categoriesData }: any) {
-  // const dispatch = useDispatch()
-  // dispatch(SET_POSTS(postsData) as any)
-  // dispatch(SET_CATEGORIES(categoriesData) as any)
-
   const { data: session } = useSession()
   return (
     <div className='App'>

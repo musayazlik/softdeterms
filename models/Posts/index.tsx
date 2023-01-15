@@ -22,6 +22,10 @@ const PostsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
   },
+  categoryId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'categories',
+  },
   createdAt: {
     type: Date,
     required: true,
