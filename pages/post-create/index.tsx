@@ -1,21 +1,21 @@
 import Layout from '@components/layout'
 import PageTitle from '@components/pageTitle'
 import axios from 'axios'
-import { getSession, useSession } from 'next-auth/react'
-import { getCsrfToken } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { wrapper } from 'store'
 import { SET_CATEGORIES } from 'store/categoriesSlices'
+import { useQuill } from 'react-quilljs'
 
 const PostCreate = ({ csrfToken }: any) => {
+  const { quill, quillRef } = useQuill()
+  const [value, setValue] = useState()
   const router = useRouter()
   const { data: session } = useSession()
   const dispatch = useDispatch()
 
   const categoriesData = useSelector((state: any) => state.categories.data)
-  console.log(categoriesData)
 
   useEffect(() => {
     if (categoriesData.length === 0) {
@@ -38,9 +38,10 @@ const PostCreate = ({ csrfToken }: any) => {
       },
       body: JSON.stringify({
         title: e.target.title.value,
-        author: e.target.author.value,
+        author: session?.user?.name,
         description: e.target.description.value,
-        userId: e.target.userId.value,
+        content: value,
+        userId: session?.user?.id,
         categoryId: e.target.categoryId.value,
       }),
     })
@@ -49,6 +50,15 @@ const PostCreate = ({ csrfToken }: any) => {
       router.push('/')
     }
   }
+
+  useEffect(() => {
+    if (quill) {
+      quill.on('text-change', () => {
+        console.log(quillRef.current.firstChild.innerHTML)
+        setValue(quillRef.current.firstChild.innerHTML)
+      })
+    }
+  }, [quill])
 
   return (
     <Layout>
@@ -60,7 +70,6 @@ const PostCreate = ({ csrfToken }: any) => {
               <div className='mb-6'>
                 <input type='hidden' name='csrfToken' value={csrfToken} />
 
-                <input type='hidden' name='userId' value={session?.user?.id} />
                 <div className='mb-6'>
                   <label
                     htmlFor='title'
@@ -88,6 +97,7 @@ const PostCreate = ({ csrfToken }: any) => {
                     name='author'
                     id='author'
                     required
+                    disabled
                     defaultValue={session?.user?.name || ''}
                     placeholder='Full Name'
                     className='w-full px-3 py-3.5 text-sm font-medium dark:bg-zinc-700 dark:text-zinc-200 leading-tight text-gray-800 border-2 border-zinc-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-600 focus:shadow-blue-600/20 duration-300 focus:text-blue-700'
@@ -120,25 +130,36 @@ const PostCreate = ({ csrfToken }: any) => {
                     className='block mb-1 text-lg font-bold text-zinc-700 dark:text-zinc-300'>
                     Description
                   </label>
-                  <textarea
+                  <input
+                    type='text'
                     name='description'
                     id='description'
-                    cols={10}
-                    rows={10}
                     required
-                    placeholder='Enter detailed information about the term or word...'
-                    className='w-full px-3 py-3 text-sm font-medium dark:bg-zinc-700 dark:text-zinc-200 leading-tight text-gray-800 border-2 border-zinc-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-600 focus:shadow-blue-600/20 duration-300 focus:text-blue-700'></textarea>
+                    placeholder='Description'
+                    className='w-full px-3 py-3.5 text-sm font-medium dark:bg-zinc-700 dark:text-zinc-200 leading-tight text-gray-800 border-2 border-zinc-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-600 focus:shadow-blue-600/20 duration-300 focus:text-blue-700'
+                  />
+                </div>
+
+                <div className='mb-6'>
+                  <label
+                    htmlFor='content'
+                    className='block mb-1 text-lg font-bold text-zinc-700 dark:text-zinc-300'>
+                    Content
+                  </label>
+                  <div className='relative rounded-sm min-h-[200px]'>
+                    <div id='content' ref={quillRef} />
+                  </div>
                 </div>
                 <div className='mb-6 grid grid-cols-2 gap-8'>
                   <button
                     type='submit'
-                    className='w-full px-3 py-4 text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:shadow-outline focus:shadow-blue-600/20 duration-300'>
+                    className='w-full px-3 py-4 text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:shadow-outline focus:shadow-blue-600/20 duration-300 font-semibold'>
                     Create Post
                   </button>
                   <button
                     type='button'
                     onClick={() => router.push('/')}
-                    className='w-full px-3 py-4 text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:shadow-outline focus:shadow-blue-600/20 duration-300'>
+                    className='w-full px-3 py-4 text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:shadow-outline focus:shadow-blue-600/20 duration-300 font-semibold'>
                     Cancel
                   </button>
                 </div>
@@ -152,35 +173,3 @@ const PostCreate = ({ csrfToken }: any) => {
 }
 
 export default PostCreate
-
-// export const getServerSideProps = wrapper.getServerSideProps(
-//   (store) => async () => {
-//     const categoriesRes = await fetch(
-//       `${process.env.NEXT_PUBLIC_URL}/api/categories`
-//     )
-//     const categoriesData = await categoriesRes.json()
-
-//     console.log('categoriesData', categoriesData)
-
-//     return {
-//       props: { categoriesData },
-//     }
-//   }
-// )
-
-// export async function getServerSideProps(context: any) {
-//   const csrfToken = await getCsrfToken(context)
-//   const session = await getSession(context)
-
-//   if (!session) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     }
-//   }
-//   return {
-//     props: { csrfToken, session },
-//   }
-// }
