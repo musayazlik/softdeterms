@@ -5,13 +5,16 @@ const PostsSchema = new mongoose.Schema({
     type: String,
     required: true,
     default: '',
-    maxHeight: 70,
   },
   description: {
     type: String,
     required: true,
     default: '',
-    maxHeight: 200,
+  },
+  content: {
+    type: String,
+    required: true,
+    default: '',
   },
   author: {
     type: String,
