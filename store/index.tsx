@@ -6,6 +6,7 @@ import categoriesReducer from './categoriesSlices'
 
 export interface State {
   posts: any
+  categories: any
 }
 
 const reducers = combineReducers({

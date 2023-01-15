@@ -64,7 +64,7 @@ const PostCreate = ({ csrfToken }: any) => {
     <Layout>
       <div className='container mx-auto mt-40'>
         <PageTitle title='Create a Post' />
-        <div className='flex justify-center'>
+        <div className='flex justify-center px-6'>
           <div className='w-full lg:w-1/2'>
             <form className='mb-20' onSubmit={(e) => createPost(e)}>
               <div className='mb-6'>
