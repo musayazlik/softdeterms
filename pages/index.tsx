@@ -103,7 +103,7 @@ export default function Home({ postsData, categoriesData }: any) {
             <div className='flex items-center justify-end mr-8 '>
               {session && (
                 <Link
-                  href={'/post-create'}
+                  href={'/post/create'}
                   className='flex gap-2 items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white dark:text-blue-900 font-semibold text-xl rounded-md border-2 border-b-4 border-blue-800 hover:scale-105 duration-300 shadow-md shadow-blue-600/40 dark:shadow-blue-800/40 mb-4'>
                   <Icon icon='ic:twotone-add-circle' fontSize={28} />
                   Post Create

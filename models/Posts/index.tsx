@@ -29,6 +29,10 @@ const PostsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'categories',
   },
+  url: {
+    type: String,
+    default: '',
+  },
   createdAt: {
     type: Date,
     required: true,
