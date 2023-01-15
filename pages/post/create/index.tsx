@@ -47,7 +47,7 @@ const PostCreate = ({ csrfToken }: any) => {
     })
     const data = await res.json()
     if (data.success) {
-      router.push('/')
+      await router.push('/')
     }
   }
 
@@ -58,7 +58,7 @@ const PostCreate = ({ csrfToken }: any) => {
         setValue(quillRef.current.firstChild.innerHTML)
       })
     }
-  }, [quill])
+  }, [quill, quillRef])
 
   return (
     <Layout>
@@ -116,11 +116,13 @@ const PostCreate = ({ csrfToken }: any) => {
                     required
                     className='w-full px-3 py-3.5 text-sm font-medium dark:bg-zinc-700 dark:text-zinc-200 leading-tight text-gray-800 border-2 border-zinc-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-600 focus:shadow-blue-600/20 duration-300 focus:text-blue-700'>
                     <option value=''>Select Category</option>
-                    {categoriesData?.map((category: any) => (
-                      <option key={category._id} value={category._id}>
-                        {category.name}
-                      </option>
-                    ))}
+                    {categoriesData?.map((category: any) => {
+                      return (
+                        <option key={category._id} value={category._id}>
+                          {category.name}
+                        </option>
+                      )
+                    })}
                   </select>
                 </div>
 
@@ -150,16 +152,16 @@ const PostCreate = ({ csrfToken }: any) => {
                     <div id='content' ref={quillRef} />
                   </div>
                 </div>
-                <div className='mb-6 grid grid-cols-2 gap-8'>
+                <div className='mb-6 flex justify-center gap-8'>
                   <button
                     type='submit'
-                    className='w-full px-3 py-4 text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:shadow-outline focus:shadow-blue-600/20 duration-300 font-semibold'>
+                    className=' px-8 py-4 text-white bg-blue-600 rounded shadow hover:bg-blue-800 focus:outline-none focus:shadow-outline focus:shadow-blue-600/20 duration-300 font-semibold'>
                     Create Post
                   </button>
                   <button
                     type='button'
                     onClick={() => router.push('/')}
-                    className='w-full px-3 py-4 text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:shadow-outline focus:shadow-blue-600/20 duration-300 font-semibold'>
+                    className=' px-8 py-4 text-red-600 hover:text-white rounded hover:bg-red-800 focus:outline-none focus:shadow-outline duration-300 font-semibold'>
                     Cancel
                   </button>
                 </div>

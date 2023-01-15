@@ -40,13 +40,16 @@ const BlogCard = ({ post }: any) => {
             </Link>
           </div>
         </div>
-        <div className='postContext sm:col-span-9 col-span-10 flex flex-col justify-between'>
+
+        <Link
+          href={`/post/${post.url}-${post._id}`}
+          className='postContext sm:col-span-9 col-span-10 flex flex-col justify-between'>
           <div className='postDetail mb-6 sm:mb-0 text-center sm:text-start'>
-            <h3 className='text-lg sm:text-2xl mb-4 font-bold text-zinc-900 dark:text-zinc-400 '>
+            <h3 className='text-lg sm:text-3xl mb-4 font-bold text-zinc-900 dark:text-zinc-400 '>
               {post.title}
             </h3>
-            <p className='text-sm sm:text-lg text-zinc-700 dark:text-zinc-400 mb-5'>
-              {post.description}
+            <p className='text-sm sm:text-base text-zinc-700 dark:text-zinc-400 mb-5'>
+              {post.description.substring(0, 160) + '...'}
             </p>
           </div>
 
@@ -89,7 +92,7 @@ const BlogCard = ({ post }: any) => {
               </span>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </>
   )
