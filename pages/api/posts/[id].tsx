@@ -1,22 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { encode } from 'html-entities'
-/** DBConnect */
+
 import dbConnect from '@lib/dbconnect'
-/** Models */
 import Posts from '../../../models/Posts'
 import Users from '../../../models/Users'
 import Categories from '../../../models/Categories'
 import { ObjectId } from 'mongodb'
-
-interface PostsType {
-  title: string
-  content: string
-  description: string
-  author: string
-  userId: ObjectId
-  categoryId: ObjectId
-  url: string
-}
 
 export default async function handler(
   req: NextApiRequest,
@@ -27,11 +15,14 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const posts = await Posts.find({})
+        const id = req.query.id
+        const posts = await Posts.findOne({
+          _id: new ObjectId(id as string),
+        })
           .populate({
             path: 'userId',
             model: Users,
-            select: ['name', 'image', 'bio', 'role'],
+            select: ['image'],
           })
           .populate({
             path: 'categoryId',
@@ -46,21 +37,7 @@ export default async function handler(
       break
     case 'POST':
       try {
-        const url =
-          req.body.title.toLowerCase().replace(/ /g, '-') +
-          '-' +
-          req.body.title.toLowerCase().replace(/ /g, '-')
-
-        const reqData: PostsType = {
-          title: encode(req.body.title),
-          description: encode(req.body.description),
-          content: encode(req.body.content),
-          userId: req.body.userId,
-          categoryId: req.body.categoryId,
-          author: encode(req.body.author),
-          url: url,
-        }
-        const postData = await Posts.create(reqData)
+        const postData = await Posts.create(req.body)
         res.status(201).json({ success: true, data: postData })
       } catch (error: any) {
         res.status(500).json({ success: false, error: error?.message })

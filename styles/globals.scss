@@ -19,3 +19,35 @@
 .dark .pinDark {
   transform: translateX(22px);
 }
+
+.ql-editor {
+  min-height: 300px;
+  max-height: 300px;
+  @apply border-2 border-zinc-700 rounded-b border-t-0;
+}
+.ql-toolbar.ql-snow ~ .ql-toolbar.ql-snow {
+  display: none;
+}
+
+.ql-toolbar.ql-snow {
+  @apply border-2 border-zinc-700 rounded-t;
+}
+.ql-container.ql-snow {
+  @apply border-0;
+}
+
+.ql-toolbar .ql-formats {
+  @apply gap-2 inline-flex mb-2;
+}
+
+.dark .ql-toolbar .ql-formats {
+  @apply gap-2 inline-flex mb-2;
+}
+
+.dark .ql-toolbar {
+  @apply bg-zinc-400;
+}
+
+.dark .ql-editor {
+  @apply text-zinc-200;
+}

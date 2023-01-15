@@ -2,10 +2,10 @@ import { Icon } from '@iconify/react'
 import React from 'react'
 
 interface Props {
-  text: String
-  category: String
+  text: string
+  category: string
   setCategory: any
-  activeCategory: String
+  activeCategory: string
   setActiveCategory: any
 }
 

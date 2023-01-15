@@ -6,10 +6,9 @@ interface Props {
 
 const PageTitle = ({ title }: Props) => {
   return (
-    <div className='title flex justify-center'>
-      <h1 className='text-4xl font-bold mx-auto mb-4 cursor-default text-zinc-900 dark:text-zinc-100 relative inline-block'>
+    <div className='title flex justify-center mb-20'>
+      <h1 className='text-4xl font-bold tracking-tighter mx-auto cursor-default text-zinc-800 dark:text-zinc-100 relative inline-block before:w-full before:bg-blue-600 before:h-4 before:block before:absolute before:bottom-0 before:shadow-blue-600/80 before:shadow-lg before:rounded-sm before:-z-10 px-3 before:left-0 '>
         {title}
-        <span className='w-full bg-blue-600 h-4 block relative -translate-y-4 -z-10 rounded-sm shadow-lg shadow-blue-600/80'></span>
       </h1>
     </div>
   )

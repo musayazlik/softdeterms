@@ -6,10 +6,10 @@ import ListItem from './listItem'
 
 const CategoryList = ({ data }: any) => {
   const [category, setCategory] = useState<string>('')
-  const [activeCategory, setActiveCategory] = useState<String>('All')
+  const [activeCategory, setActiveCategory] = useState<string>('All')
   const dispatch = useDispatch()
 
-  const categories = useSelector((state: any) => state.categories.data.data)
+  const categories = useSelector((state: any) => state.categories.data)
 
   return (
     <div className='hidden xl:flex lg:flex-col items-center w-full '>

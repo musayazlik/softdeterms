@@ -5,13 +5,16 @@ const PostsSchema = new mongoose.Schema({
     type: String,
     required: true,
     default: '',
-    maxHeight: 70,
   },
   description: {
     type: String,
     required: true,
     default: '',
-    maxHeight: 200,
+  },
+  content: {
+    type: String,
+    required: true,
+    default: '',
   },
   author: {
     type: String,
@@ -21,6 +24,14 @@ const PostsSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
+  },
+  categoryId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'categories',
+  },
+  url: {
+    type: String,
+    default: '',
   },
   createdAt: {
     type: Date,

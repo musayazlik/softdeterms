@@ -9,7 +9,7 @@ const ContactUs = () => {
         <div className='mt-28 container mx-auto pt-16 pb-28'>
           <PageTitle title='Contact Us' />
 
-          <form action='' className='grid grid-cols-1 gap-6 mt-20'>
+          <form action='' className='grid grid-cols-1 gap-6'>
             <div className='grid grid-cols-1 sm:grid-cols-12 gap-6 px-8 md:px-20 xl:px-60 '>
               <div className='flex flex-col gap-2 col-span-10 col-start-2'>
                 <label

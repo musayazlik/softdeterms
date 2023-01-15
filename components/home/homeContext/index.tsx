@@ -6,6 +6,7 @@ import CategoryList from './categoryList'
 
 const HomeContext = () => {
   const [filterStatus, setFilterStatus] = useState<boolean>(false)
+  const [filterCategory, setFilterCategory] = useState<string>('')
   return (
     <>
       <div className='container mx-auto pt-6 pb-20 px-6 '>
