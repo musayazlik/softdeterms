@@ -42,7 +42,13 @@ const BlogCard = ({ post }: any) => {
         </div>
 
         <Link
-          href={`/post/${post.url}-${post._id}`}
+          href={{
+            pathname: `/post/${post.title
+              .trim()
+              .replace(/\s+/g, '-')
+              .toLowerCase()}`,
+            query: { id: post._id },
+          }}
           className='postContext sm:col-span-9 col-span-10 flex flex-col justify-between'>
           <div className='postDetail mb-6 sm:mb-0 text-center sm:text-start'>
             <h3 className='text-lg sm:text-3xl mb-4 font-bold text-zinc-900 dark:text-zinc-400 '>
