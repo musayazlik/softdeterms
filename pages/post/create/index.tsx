@@ -65,7 +65,7 @@ const PostCreate = ({ csrfToken }: any) => {
       <div className='container mx-auto mt-40'>
         <PageTitle title='Create a Post' />
         <div className='flex justify-center px-6'>
-          <div className='w-full lg:w-1/2'>
+          <div className='w-full max-w-5xl'>
             <form className='mb-20' onSubmit={(e) => createPost(e)}>
               <div className='mb-6'>
                 <input type='hidden' name='csrfToken' value={csrfToken} />
@@ -161,7 +161,7 @@ const PostCreate = ({ csrfToken }: any) => {
                   <button
                     type='button'
                     onClick={() => router.push('/')}
-                    className=' px-8 py-4 text-red-600 hover:text-white rounded hover:bg-red-800 focus:outline-none focus:shadow-outline duration-300 font-semibold'>
+                    className=' px-8 py-4 text-red-600  rounded hover:bg-red-600 hover:text-red-200 focus:outline-none focus:shadow-outline duration-300 font-semibold'>
                     Cancel
                   </button>
                 </div>
