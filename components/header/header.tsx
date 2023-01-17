@@ -12,7 +12,7 @@ import { GetServerSidePropsContext } from 'next'
 
 const Header = () => {
   const [menuStatus, setMenuStatus] = useState(false)
-  const router = useRouter()
+  const { pathname } = useRouter()
   const darkMode = (e: any): void => {
     const html = document.querySelector('html') as HTMLElement
     if (e.target.checked === true) {
@@ -51,7 +51,7 @@ const Header = () => {
             <Link
               href={'/'}
               className={`  flex items-center gap-x-2  font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
-                router.pathname == '/'
+                pathname == '/'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
@@ -62,7 +62,7 @@ const Header = () => {
             <Link
               href={'/about-us'}
               className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
-                router.pathname == '/about-us'
+                pathname == '/about-us'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
@@ -72,8 +72,9 @@ const Header = () => {
             <Link
               href={'/post'}
               className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
-                router.pathname === '/post' ||
-                router.pathname === '/post/[slug]'
+                pathname === '/post' ||
+                pathname === '/post/[slug]' ||
+                pathname === '/post/create'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
@@ -83,7 +84,7 @@ const Header = () => {
             <Link
               href={'/contact-us'}
               className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
-                router.pathname == '/contact-us'
+                pathname == '/contact-us'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
