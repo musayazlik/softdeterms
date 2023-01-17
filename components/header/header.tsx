@@ -50,39 +50,45 @@ const Header = () => {
           <nav className=' mx-auto hidden lg:flex flex-wrap items-center justify-center  lg:gap-x-4 xl:gap-x-8 '>
             <Link
               href={'/'}
-              className={`  font-medium text-lg tracking-tight px-4 py-2 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+              className={`  flex items-center gap-x-2  font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
                 router.pathname == '/'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
-              Home
+              <Icon icon='bx:home' fontSize={22} />
+
+              <span className='mt-0.5'>Home</span>
             </Link>
             <Link
               href={'/about-us'}
-              className={`  font-medium text-lg tracking-tight px-4 py-2 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+              className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
                 router.pathname == '/about-us'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
-              About us
+              <Icon icon='bx:user-pin' fontSize={22} />
+              About
             </Link>
             <Link
-              href={'/support'}
-              className={`  font-medium text-lg tracking-tight px-4 py-2 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
-                router.pathname == '/support'
+              href={'/post'}
+              className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+                router.pathname === '/post' ||
+                router.pathname === '/post/[slug]'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
-              Support
+              <Icon icon='bx:book-open' fontSize={22} />
+              Posts
             </Link>
             <Link
               href={'/contact-us'}
-              className={`  font-medium text-lg tracking-tight px-4 py-2 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+              className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
                 router.pathname == '/contact-us'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
-              Contact us
+              <Icon icon='bx:envelope' fontSize={22} />
+              Contact
             </Link>
           </nav>
 
