@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface CategoriesType {
   data: Array<any>
+  filterCategoryId: string
 }
 
 const initialState: CategoriesType = {
   data: [],
+  filterCategoryId: '',
 }
 
 const categoriesSlice = createSlice({
@@ -17,6 +19,9 @@ const categoriesSlice = createSlice({
     },
     POST_CATEGORIES: (state, action: PayloadAction<any>) => {
       state.data.push(action.payload)
+    },
+    FILTER_CATEGORIES: (state, action: PayloadAction<any>) => {
+      state.data = action.payload
     },
   },
 })
