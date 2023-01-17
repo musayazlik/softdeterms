@@ -18,17 +18,7 @@ export default async function handler(
         const id = req.query.id
         const posts = await Posts.findOne({
           _id: new ObjectId(id as string),
-        })
-          .populate({
-            path: 'userId',
-            model: Users,
-            select: ['image'],
-          })
-          .populate({
-            path: 'categoryId',
-            model: Categories,
-            select: ['name'],
-          })
+        }).select(['content'])
 
         res.status(200).json({ posts })
       } catch (error: any) {

@@ -27,19 +27,38 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const posts = await Posts.find({})
-          .populate({
-            path: 'userId',
-            model: Users,
-            select: ['name', 'image', 'bio', 'role'],
-          })
-          .populate({
-            path: 'categoryId',
-            model: Categories,
-            select: ['name'],
-          })
+        if (req.query.categoryId) {
+          const posts = await Posts.find({})
+            .populate({
+              path: 'userId',
+              model: Users,
+              select: ['name', 'image', 'bio', 'role'],
+            })
+            .populate({
+              path: 'categoryId',
+              model: Categories,
+              select: ['name'],
+            })
+            .where('categoryId')
+            .equals(req.query.categoryId)
 
-        res.status(200).json({ posts })
+          return res.status(200).json({ posts })
+        } else {
+          const posts = await Posts.find({})
+            .select('-content')
+            .populate({
+              path: 'userId',
+              model: Users,
+              select: ['name', 'image', 'bio', 'role'],
+            })
+            .populate({
+              path: 'categoryId',
+              model: Categories,
+              select: ['name'],
+            })
+
+          res.status(200).json({ posts })
+        }
       } catch (error: any) {
         res.status(500).json({ error: error?.message })
       }
