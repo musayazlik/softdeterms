@@ -48,14 +48,14 @@ const PostCreate = () => {
               <div className='content-informations bg-zinc-100 dark:bg-zinc-900 border-b-4 border-zinc-600 dark:border-blue-600 py-4 px-8 flex space-x-10 rounded-t-2xl'>
                 <div className=' flex flex-col items-center space-y-2 justify-center '>
                   <Image
-                    src={post.posts.userId?.image}
+                    src={post.posts?.userId?.image}
                     className='rounded-full outline-offset-0 	outline-zinc-700 dark:outline-zinc-400 dark:outline-offset-2 outline-2 outline-dashed'
                     width={80}
                     height={80}
                     alt='Profile Photo'
                   />
                   <div className='font-semibold text-zinc-800 dark:text-zinc-400 whitespace-nowrap'>
-                    {post.posts.author}
+                    {post.posts?.author}
                   </div>
                   <div className='social'>
                     <div className='userSocial flex gap-2'>
@@ -91,16 +91,16 @@ const PostCreate = () => {
                 </div>
                 <div className='flex flex-col space-y-2 py-2'>
                   <h1 className='text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-400'>
-                    {post.posts.title}
+                    {post.posts?.title}
                   </h1>
 
                   <p className='text-zinc-800 dark:text-zinc-400 tracking-tight '>
-                    {post.posts.description}
+                    {post.posts?.description}
                   </p>
                 </div>
               </div>
               <div className='p-6 text-zinc-800 dark:text-zinc-400'>
-                {Parse(decode(post.posts.content))}
+                {Parse(decode(post.posts?.content))}
               </div>
             </div>
           </div>
