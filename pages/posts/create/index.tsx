@@ -6,11 +6,13 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_CATEGORIES } from 'store/categoriesSlices'
-import { useQuill } from 'react-quilljs'
+// import { useQuill } from 'react-quilljs'
+import { marked } from 'marked'
 
-const PostCreate = ({ csrfToken }: any) => {
-  const { quill, quillRef } = useQuill()
+function PostCreate({ csrfToken }: any) {
+  // const { quill, quillRef } = useQuill()
   const [value, setValue] = useState()
+  const [parsedValue, setParsedValue] = useState()
   const router = useRouter()
   const { data: session } = useSession()
   const dispatch = useDispatch()
@@ -40,25 +42,25 @@ const PostCreate = ({ csrfToken }: any) => {
         title: e.target.title.value,
         author: session?.user?.name,
         description: e.target.description.value,
-        content: value,
+        content: marked(e.target.content.value),
         userId: session?.user?.id,
         categoryId: e.target.categoryId.value,
       }),
     })
     const data = await res.json()
     if (data.success) {
-      await router.push('/')
+      router.push('/posts')
     }
   }
 
-  useEffect(() => {
-    if (quill) {
-      quill.on('text-change', () => {
-        console.log(quillRef.current.firstChild.innerHTML)
-        setValue(quillRef.current.firstChild.innerHTML)
-      })
-    }
-  }, [quill, quillRef])
+  // useEffect(() => {
+  //   if (quill) {
+  //     quill.on('text-change', () => {
+  //       console.log(quillRef.current.firstChild.innerHTML)
+  //       setValue(quillRef.current.firstChild.innerHTML)
+  //     })
+  //   }
+  // }, [quill, quillRef])
 
   return (
     <Layout>
@@ -148,9 +150,13 @@ const PostCreate = ({ csrfToken }: any) => {
                     className='block mb-1 text-lg font-bold text-zinc-700 dark:text-zinc-300'>
                     Content
                   </label>
-                  <div className='relative rounded-sm min-h-[200px]'>
+                  {/* <div className='relative rounded-sm min-h-[200px]'>
                     <div id='content' ref={quillRef} />
-                  </div>
+                  </div> */}
+                  <textarea
+                    name='content'
+                    id='content'
+                    className='w-full h-60 px-3 py-3.5 text-sm font-medium dark:bg-zinc-700 dark:text-zinc-200 leading-tight text-gray-800 border-2 border-zinc-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-600 focus:shadow-blue-600/20 duration-300 focus:text-blue-700'></textarea>
                 </div>
                 <div className='mb-6 flex justify-center gap-8'>
                   <button

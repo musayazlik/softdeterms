@@ -10,26 +10,33 @@ import axios from 'axios'
 import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import Loading from '@components/loading'
+import Swal from 'sweetalert2'
 
-const PostDetail = () => {
+function PostDetail(): JSX.Element {
   const router = useRouter()
   const [post, setPost] = useState<any>([] as any)
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    router.prefetch('/')
-    axios({
-      method: 'GET',
-      url: `${process.env.NEXT_PUBLIC_URL}/api/posts/${router.query.id}`,
-    })
-      .then((res) => {
-        setPost(res.data.posts)
-        setLoading(false)
+    if (router.query.id) {
+      axios({
+        method: 'GET',
+        url: `${process.env.NEXT_PUBLIC_URL}/api/posts/${router.query.id}`,
       })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+        .then((res) => {
+          setPost(res.data.posts)
+          setLoading(false)
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            timer: 2000,
+          })
+        })
+    }
+  }, [router.query.id])
 
   return (
     <>
@@ -45,13 +52,13 @@ const PostDetail = () => {
               <div className='w-full px-8'>
                 <Link
                   className='bg-blue-600 hover:bg-blue-800 duration-200 pl-5 pr-8 py-4 rounded-t-2xl text-white font-semibold text-lg inline-flex justify-center items-center gap-3'
-                  href={'/'}>
+                  href={'/posts'}>
                   <Icon
                     icon='line-md:arrow-left-circle-twotone'
                     width={26}
                     height={26}
                   />
-                  Home Back
+                  Back
                 </Link>
               </div>
             </div>
@@ -60,7 +67,7 @@ const PostDetail = () => {
                 <div className='content-informations bg-zinc-100 dark:bg-zinc-900 border-b-4 border-zinc-600 dark:border-blue-600 py-4 px-8 flex space-x-10 rounded-t-2xl'>
                   <div className=' flex flex-col items-center space-y-2 justify-center '>
                     <Image
-                      src={post?.userId?.image}
+                      src={post?.userId?.image || '/avatarDefault.png'}
                       className='rounded-full outline-offset-0 	outline-zinc-700 dark:outline-zinc-400 dark:outline-offset-2 outline-2 outline-dashed'
                       width={80}
                       height={80}
