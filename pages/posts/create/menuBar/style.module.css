@@ -1,0 +1,7 @@
+.isActive {
+  @apply bg-gray-200 text-blue-500;
+}
+
+.isDefault {
+  @apply bg-gray-200 text-zinc-800 rounded-md border-2 border-zinc-800 px-2.5 py-1.5;
+}

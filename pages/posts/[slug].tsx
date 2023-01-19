@@ -8,7 +8,6 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
-import { useSelector } from 'react-redux'
 import Loading from '@components/loading'
 import Swal from 'sweetalert2'
 
@@ -62,7 +61,7 @@ function PostDetail(): JSX.Element {
                 </Link>
               </div>
             </div>
-            <div className='flex justify-center'>
+            <div className='flex justify-center '>
               <div className='w-full shadow-xl shadow-zinc-300/20 dark:shadow-zinc-900/20 rounded-3xl rounded-t-2xl'>
                 <div className='content-informations bg-zinc-100 dark:bg-zinc-900 border-b-4 border-zinc-600 dark:border-blue-600 py-4 px-8 flex space-x-10 rounded-t-2xl'>
                   <div className=' flex flex-col items-center space-y-2 justify-center '>
@@ -118,7 +117,7 @@ function PostDetail(): JSX.Element {
                     </p>
                   </div>
                 </div>
-                <div className='p-6 text-zinc-800 dark:text-zinc-400'>
+                <div className='p-6 text-zinc-800 dark:text-zinc-400 prose prose-zinc dark:prose-invert dark:prose-headings:text-blue-600 dark:prose-p:text-zinc-300 '>
                   {Parse(decode(post?.content))}
                 </div>
               </div>
