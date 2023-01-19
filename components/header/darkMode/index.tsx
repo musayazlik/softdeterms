@@ -35,13 +35,13 @@ const DarkMode = ({ customClass }: { customClass: string }) => {
           ref={ref}
         />
         <span>
-          <Icon icon='icon-park-twotone:sun-one' />
+          <Icon icon='line-md:sunny-outline-twotone-loop' />
         </span>
         <div className='darkButton bg-blue-500 rounded-3xl flex items-center pl-1'>
           <div className='pin pinDark bg-blue-900 rounded-full'></div>
         </div>
         <span>
-          <Icon icon='ph:moon-stars-duotone' />
+          <Icon icon='line-md:moon-rising-twotone-alt-loop' />
         </span>
       </div>
     </>
