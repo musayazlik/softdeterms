@@ -14,6 +14,7 @@ const BlogCard = ({ post }: any) => {
             alt='avatar'
             width={100}
             height={100}
+            quality={20}
             className='rounded-full outline-offset-4 	outline-zinc-700 outline-2 outline-dashed'
           />
           <div className='postAuthor flex sm:hidden gap-3 mt-4 mb-2 justify-center items-center'>
