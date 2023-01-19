@@ -28,6 +28,8 @@ const Header = () => {
 
   const { data: session } = useSession()
 
+  const postsPath = pathname.split('/').filter(Boolean).pop()
+
   return (
     <>
       <header
@@ -72,9 +74,7 @@ const Header = () => {
             <Link
               href={'/posts'}
               className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
-                pathname === '/posts' ||
-                pathname === '/posts/[slug]' ||
-                pathname === '/posts/create'
+                postsPath == 'posts'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
               }`}>
