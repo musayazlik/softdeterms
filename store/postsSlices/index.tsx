@@ -3,17 +3,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface PostsType {
   data: Array<any>
   filterData: Array<any>
-  loading: boolean
-  error: string | null
-  payload: any
+  currentPage: number
+  dataShowLenght: number
 }
 
 const initialState: PostsType = {
   data: [],
   filterData: [],
-  loading: false,
-  error: null,
-  payload: null,
+  currentPage: 1,
+  dataShowLenght: 4,
 }
 
 const postsSlice = createSlice({
@@ -22,18 +20,20 @@ const postsSlice = createSlice({
   reducers: {
     SET_POSTS: (state, action: PayloadAction<any>) => {
       state.data = action.payload
-      state.loading = false
+      state.currentPage = 1
     },
     POST_ADDED: (state, action: PayloadAction<any>) => {
       state.data.push(action.payload)
-      state.loading = false
     },
     FILTER_POSTS: (state, action: PayloadAction<any>) => {
       state.filterData = action.payload
-      state.loading = false
+    },
+    SET_CURRENT_PAGE: (state, action: PayloadAction<any>) => {
+      state.currentPage = action.payload
     },
   },
 })
 
-export const { SET_POSTS, POST_ADDED, FILTER_POSTS } = postsSlice.actions
+export const { SET_POSTS, POST_ADDED, FILTER_POSTS, SET_CURRENT_PAGE } =
+  postsSlice.actions
 export default postsSlice.reducer

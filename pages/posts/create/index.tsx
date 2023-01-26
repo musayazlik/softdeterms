@@ -1,22 +1,33 @@
-import Layout from '@components/layout'
-import PageTitle from '@components/pageTitle'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { EditorContent, useEditor } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import Image from '@tiptap/extension-image'
+import React from 'react'
+
+/** Redux State */
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_CATEGORIES } from 'store/categoriesSlices'
-import { useQuill } from 'react-quilljs'
 
-const PostCreate = ({ csrfToken }: any) => {
-  const { quill, quillRef } = useQuill()
-  const [value, setValue] = useState()
-  const router = useRouter()
+/** Components */
+import Layout from '@components/layout'
+import PageTitle from '@components/pageTitle'
+import MenuBar from './menuBar'
+
+function PostCreate({ csrfToken }: any) {
+  /**  Next Router */
+  const { push } = useRouter()
+  /** Next Auth Session */
   const { data: session } = useSession()
+  /** Redux Dispatch */
   const dispatch = useDispatch()
 
+  /** Get categories from redux state */
   const categoriesData = useSelector((state: any) => state.categories.data)
 
+  /** Get categories from API */
   useEffect(() => {
     if (categoriesData.length === 0) {
       axios
@@ -28,6 +39,7 @@ const PostCreate = ({ csrfToken }: any) => {
     }
   }, [categoriesData])
 
+  /** Create Post */
   const createPost = async (e: any) => {
     e.preventDefault()
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts`, {
@@ -40,32 +52,39 @@ const PostCreate = ({ csrfToken }: any) => {
         title: e.target.title.value,
         author: session?.user?.name,
         description: e.target.description.value,
-        content: value,
+        content: editor?.getHTML() || '',
         userId: session?.user?.id,
         categoryId: e.target.categoryId.value,
       }),
     })
     const data = await res.json()
     if (data.success) {
-      await router.push('/')
+      push('/posts')
     }
   }
 
-  useEffect(() => {
-    if (quill) {
-      quill.on('text-change', () => {
-        console.log(quillRef.current.firstChild.innerHTML)
-        setValue(quillRef.current.firstChild.innerHTML)
-      })
-    }
-  }, [quill, quillRef])
+  /** Tiptap Editor */
+
+  const editor = useEditor({
+    extensions: [StarterKit, Image],
+    content: `
+      <h1>My first document</h1>
+      <p>This is the first paragraph.</p>
+      `,
+    editorProps: {
+      attributes: {
+        class:
+          'prose prose-stone min-w-[100%] px-3 py-3.5 text-sm font-medium dark:bg-zinc-700 dark:text-zinc-200 leading-tight text-gray-800 border-2 border-t-0 border-zinc-700 rounded-b shadow appearance-none focus:outline-none focus:shadow-outline h-56',
+      },
+    },
+  })
 
   return (
     <Layout>
       <div className='container mx-auto mt-40'>
         <PageTitle title='Create a Post' />
         <div className='flex justify-center px-6'>
-          <div className='w-full lg:w-1/2'>
+          <div className='w-full max-w-5xl'>
             <form className='mb-20' onSubmit={(e) => createPost(e)}>
               <div className='mb-6'>
                 <input type='hidden' name='csrfToken' value={csrfToken} />
@@ -148,8 +167,9 @@ const PostCreate = ({ csrfToken }: any) => {
                     className='block mb-1 text-lg font-bold text-zinc-700 dark:text-zinc-300'>
                     Content
                   </label>
-                  <div className='relative rounded-sm min-h-[200px]'>
-                    <div id='content' ref={quillRef} />
+                  <div className='flex flex-col'>
+                    <MenuBar editor={editor} />
+                    <EditorContent editor={editor} />
                   </div>
                 </div>
                 <div className='mb-6 flex justify-center gap-8'>
@@ -160,8 +180,8 @@ const PostCreate = ({ csrfToken }: any) => {
                   </button>
                   <button
                     type='button'
-                    onClick={() => router.push('/')}
-                    className=' px-8 py-4 text-red-600 hover:text-white rounded hover:bg-red-800 focus:outline-none focus:shadow-outline duration-300 font-semibold'>
+                    onClick={() => push('/')}
+                    className=' px-8 py-4 text-red-600  rounded hover:bg-red-600 hover:text-red-200 focus:outline-none focus:shadow-outline duration-300 font-semibold'>
                     Cancel
                   </button>
                 </div>

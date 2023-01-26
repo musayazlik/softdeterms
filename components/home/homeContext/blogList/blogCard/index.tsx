@@ -10,16 +10,17 @@ const BlogCard = ({ post }: any) => {
       <div className='flex flex-col sm:grid sm:grid-cols-12 px-4 py-6 gap-8 bg-zinc-50 dark:bg-zinc-800 rounded-lg border-2 border-zinc-300/40 dark:border-zinc-900/80 hover:bg-zinc-100 duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-zinc-900/50 hover:cursor-pointer hover:relative hover:border-in'>
         <div className='avatar flex flex-col items-center sm:col-span-3 col-span-12 xl:col-span-2'>
           <Image
-            src={post.userId.image || '/images/avatar.png'}
+            src={post.userId?.image || '/avatarDefault.png'}
             alt='avatar'
             width={100}
             height={100}
+            quality={20}
             className='rounded-full outline-offset-4 	outline-zinc-700 outline-2 outline-dashed'
           />
           <div className='postAuthor flex sm:hidden gap-3 mt-4 mb-2 justify-center items-center'>
             <span className='text-lg font-semibold text-zinc-900 dark:text-zinc-400'>
               {' '}
-              {post.userId.name}
+              {post.userId?.name}
             </span>
           </div>
           <div className='userSocial sm:mt-6 flex gap-2'>
@@ -43,7 +44,7 @@ const BlogCard = ({ post }: any) => {
 
         <Link
           href={{
-            pathname: `/post/${post.title
+            pathname: `/posts/${post.title
               .trim()
               .replace(/\s+/g, '-')
               .toLowerCase()}`,

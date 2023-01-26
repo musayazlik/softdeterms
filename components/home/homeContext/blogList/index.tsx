@@ -9,33 +9,29 @@ const BlogList = () => {
     currentPage: 1,
     dataShowLenght: 4,
   })
-  const data = useSelector((state: any) => state.posts.data)
+  const postState = useSelector((state: any) => state.posts)
 
   return (
     <>
       <div className='col-span-12 xl:col-span-9 lg:py-4'>
         <div className='flex flex-col sm:grid p-4 gap-y-6'>
-          {data
+          {postState.data
             ?.slice(
-              (pagination.currentPage - 1) * pagination.dataShowLenght,
-              pagination.dataShowLenght * pagination.currentPage
+              (postState.currentPage - 1) * postState.dataShowLenght,
+              postState.dataShowLenght * postState.currentPage
             )
             ?.map((post: any) => (
               <BlogCard key={post._id} post={post} />
             ))}
 
-          {data?.length === 0 && (
+          {postState.data?.length === 0 && (
             <div className='flex flex-col items-center justify-center'>
               <p className='text-xl text-gray-500'>No posts found</p>
             </div>
           )}
 
           <div className='flex justify-center'>
-            <Pagination
-              dataLenght={data?.length || 1}
-              pagination={pagination}
-              setPagination={setPagination}
-            />
+            <Pagination />
           </div>
         </div>
       </div>

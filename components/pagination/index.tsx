@@ -1,10 +1,14 @@
 import { Icon } from '@iconify/react'
-import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { SET_CURRENT_PAGE } from '@store/postsSlices'
 
-export default function App({ dataLenght, pagination, setPagination }: any) {
-  const totalPage = Math.ceil(dataLenght / pagination.dataShowLenght)
+export default function App() {
+  const dispatch = useDispatch()
+  const postState = useSelector((state: any) => state.posts)
+  const totalPage = Math.ceil(postState.data?.length / postState.dataShowLenght)
+
   const paginationPage = (page: number) => {
-    setPagination({ ...pagination, currentPage: page })
+    dispatch(SET_CURRENT_PAGE(page))
   }
 
   const paginationArea = () => {
@@ -14,14 +18,14 @@ export default function App({ dataLenght, pagination, setPagination }: any) {
       if (
         number <= 1 ||
         number >= totalPage ||
-        (number >= pagination.currentPage - 1 &&
-          number <= pagination.currentPage + 1)
+        (number >= postState.currentPage - 1 &&
+          number <= postState.currentPage + 1)
       ) {
         items.push(
           <li
             key={number}
             className={`page-item flex items-center justify-center border-2 border-b-4 rounded-md cursor-default duration-500 hover:scale-105 hover:duration-200 ${
-              pagination.currentPage === number
+              postState.currentPage === number
                 ? 'outline-dashed outline-2 sm:outline-offset-4 outline-offset-2 outline-zinc-800 dark:outline-zinc-900 border-zinc-900 bg-zinc-400 dark:bg-blue-700 dark:text-blue-900  '
                 : 'border-zinc-300 dark:border-zinc-900'
             }`}
@@ -48,18 +52,18 @@ export default function App({ dataLenght, pagination, setPagination }: any) {
   }
 
   const paginationNext = () => {
-    if (pagination.currentPage < totalPage) {
-      setPagination({ ...pagination, currentPage: pagination.currentPage + 1 })
+    if (postState.currentPage < totalPage) {
+      dispatch(SET_CURRENT_PAGE(postState.currentPage + 1))
     } else {
-      setPagination({ ...pagination, currentPage: totalPage })
+      dispatch(SET_CURRENT_PAGE(totalPage))
     }
   }
 
   const paginationPrev = () => {
-    if (pagination.currentPage > 1) {
-      setPagination({ ...pagination, currentPage: pagination.currentPage - 1 })
+    if (postState.currentPage > 1) {
+      dispatch(SET_CURRENT_PAGE(postState.currentPage - 1))
     } else {
-      setPagination({ ...pagination, currentPage: 1 })
+      dispatch(SET_CURRENT_PAGE(1))
     }
   }
 

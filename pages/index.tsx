@@ -1,20 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import AnimationsCupe from '../components/home/animationsCupe'
 import Layout from '../components/layout'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
-import HomeContext from '../components/home/homeContext'
-import axios from 'axios'
-import { useSession } from 'next-auth/react'
-import { useSelector, useDispatch } from 'react-redux'
-import { SET_POSTS } from 'store/postsSlices'
 
-import { wrapper } from 'store'
-import { SET_CATEGORIES } from 'store/categoriesSlices'
-
-export default function Home({ postsData, categoriesData }: any) {
-  const { data: session } = useSession()
+export default function Home() {
   return (
     <div className='App'>
       <Head>
@@ -99,37 +89,8 @@ export default function Home({ postsData, categoriesData }: any) {
               </div>
             </section>
           </div>
-          <div className='container mx-auto mt-14'>
-            <div className='flex items-center justify-end mr-8 '>
-              {session && (
-                <Link
-                  href={'/post/create'}
-                  className='flex gap-2 items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white dark:text-blue-900 font-semibold text-xl rounded-md border-2 border-b-4 border-blue-800 hover:scale-105 duration-300 shadow-md shadow-blue-600/40 dark:shadow-blue-800/40 mb-4'>
-                  <Icon icon='ic:twotone-add-circle' fontSize={28} />
-                  Post Create
-                </Link>
-              )}
-            </div>
-          </div>
-          <HomeContext />
         </main>
       </Layout>
     </div>
   )
 }
-
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
-    const postsRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts`)
-    const categoriesRes = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/categories`
-    )
-    const categoriesData = await categoriesRes.json()
-    const postsData = await postsRes.json()
-    await store.dispatch(SET_CATEGORIES(categoriesData.data) as any)
-    await store.dispatch(SET_POSTS(postsData.posts) as any)
-    return {
-      props: { postsData, categoriesData },
-    }
-  }
-)
