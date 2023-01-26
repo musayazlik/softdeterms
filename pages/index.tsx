@@ -1,20 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import AnimationsCupe from '../components/home/animationsCupe'
 import Layout from '../components/layout'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
-import HomeContext from '../components/home/homeContext'
-import axios from 'axios'
-import { useSession } from 'next-auth/react'
-import { useSelector, useDispatch } from 'react-redux'
-import { SET_POSTS } from 'store/postsSlices'
 
-import { wrapper } from 'store'
-import { SET_CATEGORIES } from 'store/categoriesSlices'
-
-export default function Home({ postsData, categoriesData }: any) {
-  const { data: session } = useSession()
+export default function Home() {
   return (
     <div className='App'>
       <Head>
