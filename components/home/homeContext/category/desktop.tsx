@@ -11,6 +11,7 @@ const Desktop = ({ data }: any) => {
   const dispatch = useDispatch()
 
   const categories = useSelector((state: any) => state.categories.data)
+  const posts = useSelector((state: any) => state.posts)
 
   const handleFilter = (categoryId: string, categoryName: string) => {
     if (categoryName === 'All') {
