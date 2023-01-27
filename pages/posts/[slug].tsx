@@ -1,15 +1,18 @@
-import Layout from '@components/layout'
+import { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 import { decode } from 'html-entities'
 import Parse from 'html-react-parser'
+import axios from 'axios'
+/** Next Package */
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Head from 'next/head'
+/** Icons */
+import { Icon } from '@iconify/react'
+/** Components */
+import Layout from '@components/layout'
 import Loading from '@components/loading'
-import Swal from 'sweetalert2'
 
 function PostDetail(): JSX.Element {
   const router = useRouter()

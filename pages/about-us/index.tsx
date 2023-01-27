@@ -1,8 +1,11 @@
-import Image from 'next/image'
 import React from 'react'
-import Layout from '../../components/layout'
-import { Icon } from '@iconify/react'
+/** Next Package */
+import Image from 'next/image'
 import Link from 'next/link'
+/** Icons */
+import { Icon } from '@iconify/react'
+/** Components */
+import Layout from '../../components/layout'
 import PageTitle from '../../components/pageTitle'
 
 const AboutUs = () => {

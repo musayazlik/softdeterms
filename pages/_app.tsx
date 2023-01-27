@@ -5,6 +5,7 @@ import '../styles/header.scss'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import MaintenanceMode from '../components/maintenanceMode'
+/** Redux */
 import { wrapper } from 'store'
 import { Provider } from 'react-redux'
 

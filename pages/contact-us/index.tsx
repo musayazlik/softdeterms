@@ -1,4 +1,5 @@
 import React from 'react'
+/** Components */
 import Layout from '../../components/layout'
 import PageTitle from '../../components/pageTitle'
 
