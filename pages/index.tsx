@@ -1,8 +1,13 @@
+/** Next */
+import Link from 'next/link'
 import Head from 'next/head'
+
+/** Components */
 import AnimationsCupe from '../components/home/animationsCupe'
 import Layout from '../components/layout'
+
+/** Icons */
 import { Icon } from '@iconify/react'
-import Link from 'next/link'
 
 export default function Home() {
   return (

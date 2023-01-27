@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Swal from 'sweetalert2'
 import {
   useSession,
   signIn,
@@ -7,18 +8,19 @@ import {
   getProviders,
 } from 'next-auth/react'
 import { useRouter } from 'next/router'
+/** Components */
 import AnimationsCupe from '../../components/home/animationsCupe'
+/** Icons */
 import { Icon } from '@iconify/react'
-import Swal from 'sweetalert2'
+
+interface IProviders {
+  [key: string]: any
+}
 
 const SignIn = ({ providers }: any) => {
   const { data: session } = useSession()
   const router = useRouter()
   const { error } = useRouter().query
-
-  interface IProviders {
-    [key: string]: any
-  }
 
   const errors: IProviders = {
     Signin: 'Try signing with a different account.',
@@ -83,6 +85,7 @@ const SignIn = ({ providers }: any) => {
                   <Icon icon='eva:google-fill' width={28} />
                   Sign in with Google
                 </button>
+                {/* Facebook Auth */}
                 {/* <button
                   onClick={() =>
                     signIn('facebook', {

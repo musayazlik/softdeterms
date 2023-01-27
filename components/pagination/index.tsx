@@ -1,6 +1,8 @@
-import { Icon } from '@iconify/react'
+/** Redux */
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_CURRENT_PAGE } from '@store/postsSlices'
+/** Icons */
+import { Icon } from '@iconify/react'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -50,7 +52,7 @@ export default function App() {
     }
     return items
   }
-
+  /** Pagination Next  */
   const paginationNext = () => {
     if (postState.currentPage < totalPage) {
       dispatch(SET_CURRENT_PAGE(postState.currentPage + 1))
@@ -58,7 +60,7 @@ export default function App() {
       dispatch(SET_CURRENT_PAGE(totalPage))
     }
   }
-
+  /** Pagination Prev */
   const paginationPrev = () => {
     if (postState.currentPage > 1) {
       dispatch(SET_CURRENT_PAGE(postState.currentPage - 1))

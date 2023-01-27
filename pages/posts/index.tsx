@@ -1,11 +1,15 @@
-import HomeContext from '@components/home/homeContext'
+import React from 'react'
+import Link from 'next/link'
+/** Next Auth */
+import { useSession } from 'next-auth/react'
+/** Redux */
 import { SET_CATEGORIES } from '@store/categoriesSlices'
 import { wrapper } from '@store/index'
 import { SET_POSTS } from '@store/postsSlices'
-import Link from 'next/link'
-import React from 'react'
-import { useSession } from 'next-auth/react'
+/** Icons */
 import { Icon } from '@iconify/react'
+/** Components */
+import HomeContext from '@components/home/homeContext'
 import Layout from '@components/layout'
 
 const PostIndex = () => {

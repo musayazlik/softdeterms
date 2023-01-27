@@ -1,4 +1,7 @@
+/** Next Router */
 import { useRouter } from 'next/router'
+
+/** Components */
 import Footer from './footer/footer'
 import Header from './header/header'
 

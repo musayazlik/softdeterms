@@ -1,16 +1,16 @@
+import React, { useEffect } from 'react'
 import axios from 'axios'
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+/** Tiptap */
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
-import React from 'react'
-
+/** Next Auth */
+import { useSession } from 'next-auth/react'
+/** Next Package */
+import { useRouter } from 'next/router'
 /** Redux State */
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_CATEGORIES } from 'store/categoriesSlices'
-
 /** Components */
 import Layout from '@components/layout'
 import PageTitle from '@components/pageTitle'
