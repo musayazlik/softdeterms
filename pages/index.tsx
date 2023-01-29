@@ -105,7 +105,7 @@ export default function Home() {
                       <h2 className='mb-6 font-semibold w-auto text-xl underline underline-offset-4 dark:decoration-slate-50 decoration-wavy before:w-full before:h-5 before:bg-blue-400 before:inline-block before:absolute relative before:-z-10 px-4 before:left-0 before:rounded-sm before:shadow-md before:shadow-blue-400/50'>
                         Heartbeat of Words
                       </h2>
-                      <p>
+                      <p className='dark:text-white'>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Quisquam, quod. Quisquam, quod. Quisquam, quod.
                         Quisquam, quod. Quisquam, quod. Quisquam, quod.
