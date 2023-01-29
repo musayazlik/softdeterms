@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /** Next */
 import Link from 'next/link'
 import Head from 'next/head'
@@ -122,7 +123,12 @@ export default function Home() {
                   </div>
                 </div>
                 <div className='col-span-6'>
-                  <Image src='/programming.svg' width={500} height={500} />
+                  <Image
+                    src='/programming.svg'
+                    width={500}
+                    height={500}
+                    alt=''
+                  />
                 </div>
               </div>
             </section>
