@@ -96,13 +96,13 @@ export default function Home() {
             </section>
           </div>
 
-          <div className='container mx-auto mt-32'>
+          <div className='container mx-auto mt-32 px-8'>
             <section className='my-16'>
-              <div className='grid grid-cols-12 items-center justify-center w-full h-full gap-20'>
+              <div className='flex flex-col md:grid grid-cols-12 items-center justify-center w-full h-full gap-20'>
                 <div className='col-span-6 h-full'>
                   <div className='flex flex-col items-start justify-around h-full '>
                     <div className='flex flex-col items-start'>
-                      <h2 className='mb-6 font-semibold w-auto text-xl underline underline-offset-4 decoration-wavy before:w-full before:h-5 before:bg-blue-400 before:inline-block before:absolute relative before:-z-10 px-4 before:left-0 before:rounded-sm before:shadow-md before:shadow-blue-400/50'>
+                      <h2 className='mb-6 font-semibold w-auto text-xl underline underline-offset-4 dark:decoration-slate-50 decoration-wavy before:w-full before:h-5 before:bg-blue-400 before:inline-block before:absolute relative before:-z-10 px-4 before:left-0 before:rounded-sm before:shadow-md before:shadow-blue-400/50'>
                         Heartbeat of Words
                       </h2>
                       <p>
@@ -112,11 +112,10 @@ export default function Home() {
                         Quisquam, quod.
                       </p>
                     </div>
-
                     <div className='mt-12'>
                       <Link
                         href={'/'}
-                        className=' px-4 py-2 border-2 border-blue-600 outline-2 outline-double outline-offset-4 outline-zinc-800 text-xl font-semibold'>
+                        className=' px-4 py-2 border-2 border-blue-800 text-blue-200 outline-2 outline-dashed outline-offset-4 outline-zinc-800 dark:outline-zinc-200 text-xl font-semibold rounded-md bg-blue-600'>
                         Learn More
                       </Link>
                     </div>
