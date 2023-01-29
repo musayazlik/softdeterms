@@ -8,6 +8,7 @@ import Layout from '../components/layout'
 
 /** Icons */
 import { Icon } from '@iconify/react'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -91,6 +92,39 @@ export default function Home() {
                     className='hover:drop-shadow-md'
                   />
                 </Link>
+              </div>
+            </section>
+          </div>
+
+          <div className='container mx-auto mt-32'>
+            <section className='my-16'>
+              <div className='grid grid-cols-12 items-center justify-center w-full h-full gap-20'>
+                <div className='col-span-6 h-full'>
+                  <div className='flex flex-col items-start justify-around h-full '>
+                    <div className='flex flex-col items-start'>
+                      <h2 className='mb-6 font-semibold w-auto text-xl underline underline-offset-4 decoration-wavy before:w-full before:h-5 before:bg-blue-400 before:inline-block before:absolute relative before:-z-10 px-4 before:left-0 before:rounded-sm before:shadow-md before:shadow-blue-400/50'>
+                        Heartbeat of Words
+                      </h2>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quod. Quisquam, quod. Quisquam, quod.
+                        Quisquam, quod. Quisquam, quod. Quisquam, quod.
+                        Quisquam, quod.
+                      </p>
+                    </div>
+
+                    <div className='mt-12'>
+                      <Link
+                        href={'/'}
+                        className=' px-4 py-2 border-2 border-blue-600 outline-2 outline-double outline-offset-4 outline-zinc-800 text-xl font-semibold'>
+                        Learn More
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-span-6'>
+                  <Image src='/programming.svg' width={500} height={500} />
+                </div>
               </div>
             </section>
           </div>
