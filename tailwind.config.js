@@ -5,7 +5,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontWeight: {
+        maxblack: '1000',
+      },
+    },
   },
   plugins: [require('@tailwindcss/typography')],
   darkMode: 'class',
