@@ -37,9 +37,11 @@ const Header = () => {
         <div className='xl:container mx-auto flex flex-wrap py-5 px-6 flex-row items-center justify-between '>
           <Link
             href={'/'}
-            className='flex flex-col gap-y-2 title-font font-medium items-center  md:mb-0'>
-            <p>Logo</p>
-            <div className='flex gap-x-4 mt-1'>
+            className='flex flex-col gap-y-1 title-font font-medium items-center  md:mb-0'>
+            <span className='font-maxblack text-xl xl:text-2xl'>
+              SoftDeTerms
+            </span>
+            <div className='flex gap-x-4'>
               <span className='w-[4px] h-[4px] bg-blue-800 dark:bg-zinc-800  rounded-full'></span>
               <span className='w-[4px] h-[4px] bg-blue-700 dark:bg-zinc-700  rounded-full'></span>
               <span className='w-[4px] h-[4px] bg-blue-600 dark:bg-zinc-600  rounded-full'></span>
@@ -52,7 +54,7 @@ const Header = () => {
           <nav className=' mx-auto hidden lg:flex flex-wrap items-center justify-center  lg:gap-x-4 xl:gap-x-8 '>
             <Link
               href={'/'}
-              className={`  flex items-center gap-x-2  font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+              className={`  flex items-center gap-x-2  font-bold text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
                 pathname == '/'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
@@ -63,7 +65,7 @@ const Header = () => {
             </Link>
             <Link
               href={'/about-us'}
-              className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+              className={` flex items-center gap-x-2 font-bold text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
                 pathname == '/about-us'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
@@ -73,7 +75,7 @@ const Header = () => {
             </Link>
             <Link
               href={'/posts'}
-              className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+              className={` flex items-center gap-x-2 font-bold text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
                 postsPath == 'posts'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
@@ -83,7 +85,7 @@ const Header = () => {
             </Link>
             <Link
               href={'/contact-us'}
-              className={` flex items-center gap-x-2 font-medium text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
+              className={` flex items-center gap-x-2 font-bold text-base tracking-tight px-4 py-2.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/50 hover:text-blue-100 duration-300 rounded-md hover:outline-offset-4 outline-2 hover:outline-blue-600/50 hover:outline-dotted cursor-pointer ${
                 pathname == '/contact-us'
                   ? 'bg-blue-700 shadow-lg shadow-blue-700/50 text-blue-100 outline-offset-4 outline-2 outline-blue-600/50 outline-dotted'
                   : ''
@@ -109,7 +111,7 @@ const Header = () => {
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className='font-medium text-white bg-red-600 text-lg tracking-tight p-1  hover:shadow-lg shadow-red-700/50 hover:shadow-red-600/40 duration-300 rounded-full border-2 border-red-800 hover:scale-110 cursor-pointer opacity-80 '
+                  className='font-bold text-white bg-red-600 text-lg tracking-tight p-1  hover:shadow-lg shadow-red-700/50 hover:shadow-red-600/40 duration-300 rounded-full border-2 border-red-800 hover:scale-110 cursor-pointer opacity-80 '
                   title='Loyout'>
                   <Icon
                     icon='material-symbols:exit-to-app-rounded'
@@ -121,7 +123,7 @@ const Header = () => {
               <div className='mx-auto hidden lg:flex gap-x-4'>
                 <Link
                   href={'/sign-in'}
-                  className='font-medium text-lg tracking-tight px-4 py-2 bg-blue-700 hover:shadow-lg shadow-blue-700/50 hover:shadow-blue-600/40 text-blue-100 duration-300 rounded-md outline-offset-4 outline-2 outline-blue-600/50 outline-dotted hover:bg-blue-800 cursor-pointer dark:text-blue-50'>
+                  className='font-extrabold text-lg tracking-tight px-4 py-2 bg-blue-700 hover:shadow-lg shadow-blue-700/50 hover:shadow-blue-600/40 text-blue-100 duration-300 rounded-md outline-offset-4 outline-2 outline-blue-600/50 outline-dotted hover:bg-blue-800 cursor-pointer dark:text-blue-50'>
                   Sign in
                 </Link>
 

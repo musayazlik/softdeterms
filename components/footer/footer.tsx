@@ -34,7 +34,9 @@ const Footer = () => {
               <Link
                 href={'/'}
                 className='flex flex-col gap-y-2 title-font font-medium items-center md:mb-0'>
-                <p>Logo</p>
+                <span className='font-maxblack text-xl xl:text-2xl'>
+                  SoftDeTerms
+                </span>
                 <div className='flex gap-x-4 mt-1'>
                   <span className='w-[4px] h-[4px] bg-blue-800 dark:bg-zinc-800  rounded-full'></span>
                   <span className='w-[4px] h-[4px] bg-blue-700 dark:bg-zinc-700  rounded-full'></span>
@@ -47,7 +49,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className='col-span-12 sm:col-span-8 lg:col-span-5 flex items-center justify-center my-4 sm:my-0 sm:justify-end'>
-              <div className='copyright flex gap-x-2 sm:text-base justify-end items-center text-xs'>
+              <div className='copyright flex gap-x-2 sm:text-base justify-end items-center text-xs font-semibold'>
                 <p>© 2022 </p>
                 <Link href={'/'} className='cursor-pointer'>
                   <b>SoftDeTerms</b>
@@ -57,7 +59,7 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-        <div className='py-2 font-semibold bg-blue-800 dark:bg-blue-900 text-white flex items-center gap-x-3 justify-center text-xs'>
+        <div className='py-2 font-bold bg-blue-800 dark:bg-blue-900 text-white flex items-center gap-x-3 justify-center text-xs'>
           <p>Designed By </p>
           <Icon icon='ph:heart-duotone' className='text-xl' />
           <Link
