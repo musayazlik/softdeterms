@@ -27,10 +27,10 @@ export default function Home() {
             <AnimationsCupe />
             <section className='container mx-auto max-w-3xl flex flex-col justify-center items-start rounded-3xl  '>
               <div className='flex flex-col items-center  '>
-                <h1 className=' text-2xl lg:text-5xl font-bold text-zinc-200 shadow-lg shadow-blue-800/20 bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-blue-700/20 via-blue-900/20 to-zinc-900/20 backdrop-blur-sm px-14 py-6 mb-12 border-b-4 border-blue-800'>
+                <h1 className=' text-2xl lg:text-5xl font-black text-zinc-200 shadow-lg shadow-blue-800/20 bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-blue-700/20 via-blue-900/20 to-zinc-900/20 backdrop-blur-sm px-14 py-6 mb-12 border-b-4 border-blue-800'>
                   SoftDeTerms
                 </h1>
-                <p className=' bg-zinc-800/20 dark:bg-zinc-900/20 text-zinc-200 text-center px-4 sm:px-14 py-8 backdrop-blur-sm font-medium text-md sm:text-lg leading-7 '>
+                <p className=' bg-zinc-800/20 dark:bg-zinc-900/20 text-zinc-200 text-center px-4 sm:px-14 py-8 backdrop-blur-sm font-bold text-md sm:text-lg leading-7 '>
                   As a software developer, learn words and terms related to the
                   software profession from a single point.
                 </p>
@@ -97,27 +97,38 @@ export default function Home() {
             </section>
           </div>
 
-          <div className='container mx-auto mt-32 px-8'>
-            <section className='my-16'>
+          <div className='container mx-auto mt-32 px-8 dark:bg-zinc-900 rounded-xl '>
+            <section className='my-16 py-4'>
               <div className='flex flex-col md:grid grid-cols-12 items-center justify-center w-full h-full gap-20'>
                 <div className='col-span-6 h-full'>
                   <div className='flex flex-col items-start justify-around h-full '>
                     <div className='flex flex-col items-start'>
-                      <h2 className='mb-6 font-semibold w-auto text-xl underline underline-offset-4 dark:decoration-slate-50 decoration-wavy before:w-full before:h-5 before:bg-blue-400 before:inline-block before:absolute relative before:-z-10 px-4 before:left-0 before:rounded-sm before:shadow-md before:shadow-blue-400/50'>
-                        Heartbeat of Words
+                      <h2 className='mb-6 font-extrabold w-auto text-zinc-50 dark:text-zinc-900 text-xl underline underline-offset-4 dark:decoration-blue-600 decoration-wavy decoration-blue-900 before:w-full before:h-6 before:bg-blue-600 before:inline-block before:absolute relative before:z-0 px-4 before:left-0 before:rounded-sm before:shadow-md before:shadow-blue-600/50'>
+                        <span className='relative z-10 '>
+                          Heartbeat of Words
+                        </span>
                       </h2>
-                      <p className='dark:text-white'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quisquam, quod. Quisquam, quod. Quisquam, quod.
-                        Quisquam, quod. Quisquam, quod. Quisquam, quod.
-                        Quisquam, quod.
+                      <p className='dark:text-white font-bold'>
+                        As software developers, we use a lot of terms or words
+                        related to software in business life. But we may not
+                        know the meaning of some of them and why they are used.
+                        We immediately do a google search to learn. But that
+                        would be a bit troublesome. We thought about how it
+                        would be if we made a site where software developers
+                        could easily access these words or terms, and we
+                        designed the{' '}
+                        <span className='underline-offset-4 underline decoration-wavy text-blue-600 decoration-blue-600'>
+                          Softdeterms
+                        </span>{' '}
+                        site. Now familiarize yourself with the terms related to
+                        software.
                       </p>
                     </div>
-                    <div className='mt-12'>
+                    <div className=' hover:scale-110 duration-200'>
                       <Link
                         href={'/'}
-                        className=' px-4 py-2 border-2 border-blue-800 text-blue-200 outline-2 outline-dashed outline-offset-4 outline-zinc-800 dark:outline-zinc-200 text-xl font-semibold rounded-md bg-blue-600'>
-                        Learn More
+                        className=' px-4 py-2 border-2 border-blue-800 text-blue-100 outline-2 outline-dashed outline-offset-4 outline-zinc-800 dark:outline-zinc-200 text-xl font-bold rounded-md bg-blue-600 '>
+                        Look up the terms
                       </Link>
                     </div>
                   </div>

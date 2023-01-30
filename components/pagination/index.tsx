@@ -34,7 +34,7 @@ export default function App() {
             onClick={() => {
               paginationPage(number)
             }}>
-            <a className='text-xs sm:text-lg font-medium page-link min-h-[24px] min-w-[24px] sm:min-h-[40px] sm:min-w-[40px]  flex items-center justify-center cursor-pointer dark:text-zinc-200 duration-500 '>
+            <a className='text-xs sm:text-lg font-bold page-link min-h-[24px] min-w-[24px] sm:min-h-[40px] sm:min-w-[40px]  flex items-center justify-center cursor-pointer dark:text-zinc-200 duration-500 '>
               {number}
             </a>
           </li>
@@ -42,7 +42,7 @@ export default function App() {
       } else {
         if (threePoints === true) {
           items.push(
-            <li key={number} className='page-item threePoints'>
+            <li key={number} className='page-item threePoints font-bold'>
               <a className='page-link '>...</a>
             </li>
           )
@@ -76,7 +76,7 @@ export default function App() {
           <ul className='pagination flex gap-2 sm:gap-4 items-center'>
             <li className='page-item previous hover:scale-105 duration-200'>
               <a
-                className='page-link flex justify-center items-center bg-blue-700 min-h-[28px] min-w-[28px] sm:px-4 sm:py-2 rounded-md text-white cursor-pointer space-x-1 border-2 border-b-4 border-blue-800'
+                className='page-link flex justify-center items-center bg-blue-700 min-h-[28px] min-w-[28px] sm:pl-3 sm:pr-4 sm:py-2 rounded-md text-white cursor-pointer space-x-1 border-2 border-b-4 border-blue-800'
                 onClick={() => {
                   paginationPrev()
                 }}>
@@ -85,18 +85,18 @@ export default function App() {
                   inline={true}
                   className='text-xl'
                 />
-                <span className='hidden sm:flex text-xl'>Prev</span>
+                <span className='hidden sm:flex text-xl font-bold'>Prev</span>
               </a>
             </li>
 
             {paginationArea()}
 
-            <li className='page-item next hover:scale-105 duration-200'>
+            <li className='page-item next hover:scale-105 duration-200 font-bold'>
               <a
                 onClick={() => {
                   paginationNext()
                 }}
-                className='page-link flex justify-center items-center bg-blue-700 min-h-[28px] min-w-[28px] sm:px-4 sm:py-2 rounded-md text-white cursor-pointer space-x-1 border-2 border-b-4 border-blue-800'>
+                className='page-link flex justify-center items-center bg-blue-700 min-h-[28px] min-w-[28px] sm:pl-4 sm:pr-3 sm:py-2 rounded-md text-white cursor-pointer space-x-1 border-2 border-b-4 border-blue-800'>
                 <span className='hidden sm:flex text-xl'>Next</span>
                 <Icon
                   icon='ph:caret-right-duotone'
